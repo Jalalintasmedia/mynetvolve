@@ -77,12 +77,12 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
       Navigator.of(context).pop();
     } catch (err) {
       var errMsg = 'Log In Gagal\nHarap periksa koneksi internet Anda.';
-      print(err.toString().contains('INVALID USERLOGIN'));
-      print('====== $err');
 
       if (err.toString().contains('INVALID USERLOGIN') ||
           err.toString().contains('INVALID ACCOUNT-NO or MOBILE PHONE')) {
         errMsg = 'No Pelanggan atau Passsword Salah';
+      } else if(err.toString().contains('Bnetfit')) {
+        errMsg = err.toString();
       }
       _showErrMsg(errMsg);
     }

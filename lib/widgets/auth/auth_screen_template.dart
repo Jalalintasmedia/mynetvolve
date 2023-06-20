@@ -26,7 +26,7 @@ class AuthScreenTemplate extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        const NetvolveLogo(padding: 70),
+                        const NetvolveLogo(padding: 0),
                         const SizedBox(height: 40),
                         formWidget,
                       ],

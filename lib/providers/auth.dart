@@ -13,6 +13,7 @@ import 'package:mynetvolve/core/constants.dart';
 import 'package:mynetvolve/screens/menu/beranda_screen.dart';
 import 'package:salesiq_mobilisten/salesiq_mobilisten.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mynetvolve/models/http_exception.dart';
 
 import '../helpers/get_ip_address.dart';
 
@@ -106,6 +107,9 @@ class Auth with ChangeNotifier {
 
       if (responseData['result'] != '00') {
         throw HttpException(responseData['msg']);
+      }
+      if (responseData['data']['t_isp_id'] != '1') {
+        throw HttpException('Tidak dapat login menggunakan akun Bnetfit');
       }
 
       // new token based on extracted data
