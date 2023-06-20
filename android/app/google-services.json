@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "139769463785",
+    "project_id": "mybnetfit",
+    "storage_bucket": "mybnetfit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139769463785:android:8dba6a03854e9e04390178",
+        "android_client_info": {
+          "package_name": "com.jlm.mybnetfit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "139769463785-fd35h7605li0soj87bau58fl3nl0j7vq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhTq9AQ3CtPJh5qI2QJIZ7KRG8SvN1wb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "139769463785-fd35h7605li0soj87bau58fl3nl0j7vq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "139769463785-9iog3gfkb5m6395ghtisijs121dd7mfh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jlm.mybnetfit"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139769463785:android:08b015d2980563e8390178",
+        "android_client_info": {
+          "package_name": "com.jlm.mynetvolve"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "139769463785-fd35h7605li0soj87bau58fl3nl0j7vq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhTq9AQ3CtPJh5qI2QJIZ7KRG8SvN1wb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "139769463785-fd35h7605li0soj87bau58fl3nl0j7vq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "139769463785-9iog3gfkb5m6395ghtisijs121dd7mfh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jlm.mybnetfit"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139769463785:android:1bdb1618c06ff080390178",
+        "android_client_info": {
+          "package_name": "com.jlm.netvolve"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "139769463785-fd35h7605li0soj87bau58fl3nl0j7vq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhTq9AQ3CtPJh5qI2QJIZ7KRG8SvN1wb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "139769463785-fd35h7605li0soj87bau58fl3nl0j7vq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "139769463785-9iog3gfkb5m6395ghtisijs121dd7mfh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jlm.mybnetfit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
