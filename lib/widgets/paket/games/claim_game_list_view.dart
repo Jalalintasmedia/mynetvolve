@@ -62,6 +62,7 @@ class _ClaimGameListViewState extends State<ClaimGameListView> {
           return const ShimmerListView(
             shimmerTile: ClaimGameTileShimmer(),
             useDivider: false,
+            itemCount: 3,
           );
         }
         if (dataSnapshot.hasError) {

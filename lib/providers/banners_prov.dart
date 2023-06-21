@@ -19,10 +19,10 @@ class BannerProvs with ChangeNotifier {
     return _carouselBanners;
   }
 
-  List<String>? get promoBannerUrls {
+  List<String>? get promoBannerImages {
     List<String>? urls = [];
     _promoBanners!.map((promo) {
-      urls.add(promo.pathBannerInd);
+      urls.add(promo.pathBanner);
     }).toList();
     return urls;
   }
@@ -46,7 +46,7 @@ class BannerProvs with ChangeNotifier {
   }
 
   Future<void> getPromoBanners() async {
-    final url = Uri.parse(BNETFIT_API_URL + '/promos');
+    final url = Uri.parse(BNETFIT_API_URL + '/netvolve/promos');
     final response = await http.post(
       url,
       headers: {
@@ -70,7 +70,7 @@ class BannerProvs with ChangeNotifier {
   }
 
   Future<void> getCarouselBanners() async {
-    final url = Uri.parse(BNETFIT_API_URL + '/banners');
+    final url = Uri.parse(BNETFIT_API_URL + '/netvolve/banners');
     final response = await http.post(
       url,
       headers: {

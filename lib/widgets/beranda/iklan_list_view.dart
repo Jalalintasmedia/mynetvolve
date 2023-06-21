@@ -54,12 +54,12 @@ class IklanListView extends StatelessWidget {
                   child: ListView.separated(
                     // physics: const NeverScrollableScrollPhysics(),
                     separatorBuilder: (ctx, i) => const SizedBox(height: 10),
-                    itemCount: promoData.promoBannerUrls!.length,
+                    itemCount: promoData.promoBannerImages!.length,
                     itemBuilder: (ctx, i) {
                       return Column(
                         children: [
                           iklanWidget(
-                            promoData.promoBannerUrls![i],
+                            promoData.promoBannerImages![i],
                             promoData.promoBanners![i].titleInd,
                             promoData.promoBanners![i].descriptionInd,
                           ),
