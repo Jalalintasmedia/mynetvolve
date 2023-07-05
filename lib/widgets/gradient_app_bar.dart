@@ -30,12 +30,14 @@ class _GradientAppBarState extends State<GradientAppBar> {
       title: Text(widget.title),
       elevation: 0,
       flexibleSpace: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              ThemeColors.accentColor,
               Palette.kToDark,
+              Palette.kToDark.shade300,
             ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
       ),

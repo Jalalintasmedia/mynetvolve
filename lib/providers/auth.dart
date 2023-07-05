@@ -142,7 +142,7 @@ class Auth with ChangeNotifier {
       prefs.setBool('isDisplayed', false);
 
       // remove networkInfo
-      prefs.remove(BerandaScreen.NETWORK_INFO);
+      // prefs.remove(BerandaScreen.NETWORK_INFO);
     } catch (e) {
       print('===== ERROR: $e');
       rethrow;

@@ -14,14 +14,6 @@ class GradientBackground extends StatelessWidget {
       children: [
         Container(
           decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/office_bg2.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        Container(
-          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Color.fromRGBO(12, 193, 246, 0.9),
@@ -33,20 +25,22 @@ class GradientBackground extends StatelessWidget {
             ),
           ),
         ),
-        child,
-        // const Align(
-        //   alignment: Alignment.bottomCenter,
-        //   child: Padding(
-        //     padding: EdgeInsets.symmetric(vertical: 15),
-        //     child: Text(
-        //       'Butuh Bantuan?',
-        //       style: TextStyle(
-        //         color: Colors.white,
-        //         fontSize: 12,
-        //       ),
+        // Container(
+        //   decoration: const BoxDecoration(
+        //     image: DecorationImage(
+        //       image: AssetImage('assets/images/office_bg2.jpg'),
+        //       fit: BoxFit.cover,
         //     ),
         //   ),
         // ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            width: double.infinity,
+            child: Image.asset('assets/images/netvolve-icon-half.png'),
+          ),
+        ),
+        child,
       ],
     );
   }

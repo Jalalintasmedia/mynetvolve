@@ -20,12 +20,12 @@ class CircleIndicator extends StatelessWidget {
     return AnimatedSmoothIndicator(
       activeIndex: activeIndex,
       count: imagesLength,
-      effect: SlideEffect(
-        activeDotColor: activeDotColor,
-        dotColor: dotColor,
-        dotHeight: 12,
-        dotWidth: 12,
-        spacing: 12,
+      effect: const ExpandingDotsEffect(
+        dotColor: Colors.white,
+        activeDotColor: Colors.white,
+        dotHeight: 8,
+        dotWidth: 8,
+        spacing: 6,
       ),
     );
   }

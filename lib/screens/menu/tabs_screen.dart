@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mynetvolve/core/palette.dart';
 import 'package:mynetvolve/helpers/popups.dart';
 import 'package:mynetvolve/screens/menu/paket_screen.dart';
 import 'package:mynetvolve/screens/splash_screen.dart';
@@ -37,9 +38,7 @@ class _TabsScreenState extends State<TabsScreen> {
     askPermission();
     _pages = [
       const BerandaScreen(),
-      const PaketScreen(),
       const ChatScreen(),
-      // const AreaScreen(),
       const ProfileScreen(),
     ];
     setState(() {});
@@ -94,14 +93,12 @@ class _TabsScreenState extends State<TabsScreen> {
                   ),
                   bottomNavigationBar: BottomNavigationBar(
                     onTap: _selectScreen,
-                    backgroundColor: Colors.white,
-                    unselectedItemColor: Colors.black,
-                    selectedItemColor: Colors.blue,
+                    selectedItemColor: Palette.kToDark,
                     currentIndex: _selectedPageIndex,
                     type: BottomNavigationBarType.fixed,
                     iconSize: 24,
-                    selectedFontSize: 0,
-                    unselectedFontSize: 0,
+                    selectedFontSize: 10,
+                    unselectedFontSize: 10,
                     selectedLabelStyle: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -114,17 +111,9 @@ class _TabsScreenState extends State<TabsScreen> {
                         label: 'Beranda',
                       ),
                       navBarItem(
-                        icon: 'responsive.png',
-                        label: 'Paket',
-                      ),
-                      navBarItem(
                         icon: 'chat.png',
                         label: 'Chat',
                       ),
-                      // navBarItem(
-                      //   icon: 'map.png',
-                      //   label: 'Area',
-                      // ),
                       navBarItem(
                         icon: 'user.png',
                         label: 'Profile',
@@ -145,36 +134,10 @@ class _TabsScreenState extends State<TabsScreen> {
     required String label,
   }) {
     return BottomNavigationBarItem(
-      icon: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
-        child: Column(
-          children: [
-            GradientWidget(
-              shaderCallback: (bounds) {
-                return const LinearGradient(
-                  colors: [
-                    Color.fromRGBO(0, 236, 255, 0.5),
-                    Colors.cyanAccent,
-                    Color.fromRGBO(0, 26, 255, 0.9),
-                  ],
-                  begin: Alignment.bottomLeft,
-                  end: Alignment.topRight,
-                  stops: [0.3, 0.5, 0.9],
-                ).createShader(bounds);
-              },
-              child: ImageIcon(
-                AssetImage('assets/icons/$icon'),
-              ),
-            ),
-            const SizedBox(height: 5),
-            Text(
-              label,
-              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
-            )
-          ],
-        ),
+      icon: ImageIcon(
+        AssetImage('assets/icons/$icon'),
       ),
-      label: '',
+      label: label,
     );
   }
 }

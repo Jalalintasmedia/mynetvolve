@@ -35,8 +35,8 @@ class _ImagesCarouselState extends State<ImagesCarousel> {
         widget.banners != null ? widget.banners! : _images;
     List<String> carouselUrls = widget.urls != null ? widget.urls! : ['', ''];
     return SizedBox(
-      height: widget.height,
-      child: Stack(
+      height: widget.height + 24,
+      child: Column(
         children: [
           CarouselSlider.builder(
             options: CarouselOptions(
@@ -62,17 +62,24 @@ class _ImagesCarouselState extends State<ImagesCarousel> {
               );
             },
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 40),
-            child: Align(
-              alignment: AlignmentDirectional.bottomCenter,
-              child: CircleIndicator(
-                activeIndex: _activeIndex,
-                imagesLength: carouselImages.length,
-                activeDotColor: Colors.white,
-                dotColor: Colors.white60,
-              ),
-            ),
+          // Padding(
+          //   padding: const EdgeInsets.only(bottom: 40),
+          //   child: Align(
+          //     alignment: AlignmentDirectional.bottomCenter,
+          //     child: CircleIndicator(
+          //       activeIndex: _activeIndex,
+          //       imagesLength: carouselImages.length,
+          //       activeDotColor: Colors.white,
+          //       dotColor: Colors.white60,
+          //     ),
+          //   ),
+          // ),
+          const SizedBox(height: 10),
+          CircleIndicator(
+            activeIndex: _activeIndex,
+            imagesLength: carouselImages.length,
+            activeDotColor: Colors.white,
+            dotColor: Colors.white60,
           ),
         ],
       ),
@@ -87,17 +94,26 @@ class _ImagesCarouselState extends State<ImagesCarousel> {
   ) {
     return Container(
       width: double.infinity,
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+      ),
       child: isUrl
-          ? ClickableImage(
-              image: image,
-              height: widget.height,
-              url: url,
+          ? ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: ClickableImage(
+                image: image,
+                height: widget.height,
+                url: url,
+              ),
             )
-          // : Container(
-          //     color: Colors.grey.shade400,
-          //   ),
-          : const ShimmerWidget.rectangular(height: 0),
+          : ShimmerWidget.circular(
+              width: double.infinity,
+              height: 0,
+              shapeBorder: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
     );
   }
 }
