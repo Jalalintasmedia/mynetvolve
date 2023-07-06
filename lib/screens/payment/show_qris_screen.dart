@@ -3,23 +3,18 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:intl/intl.dart';
-import 'package:mynetvolve/helpers/save_image.dart';
 import 'package:mynetvolve/models/invoice.dart';
-import 'package:mynetvolve/providers/customer_profile.dart';
-import 'package:mynetvolve/widgets/gradient_app_bar.dart';
-import 'package:mynetvolve/widgets/payment/ringkasan_card.dart';
-import 'package:mynetvolve/widgets/payment/ringkasan_qris_card.dart';
-import 'package:mynetvolve/widgets/profile/detail_tagihan_tile.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:share_plus/share_plus.dart';
 
+import '../../core/enums.dart';
+import '../../helpers/save_image.dart';
+import '../../providers/customer_profile.dart';
 import '../../providers/qris_prov.dart';
+import '../../widgets/gradient_app_bar.dart';
+import '../../widgets/payment/ringkasan_qris_card.dart';
 
-class ShowQrisScreen extends StatelessWidget {
+class ShowQrisScreen extends StatefulWidget {
   const ShowQrisScreen({
     Key? key,
     required this.invoiceById,
@@ -32,6 +27,11 @@ class ShowQrisScreen extends StatelessWidget {
   final int amountBeforeAdmin;
 
   @override
+  State<ShowQrisScreen> createState() => _ShowQrisScreenState();
+}
+
+class _ShowQrisScreenState extends State<ShowQrisScreen> {
+  @override
   Widget build(BuildContext context) {
     final globalKey = GlobalKey();
     final accountNo = Provider.of<CustomerProfile>(
@@ -43,8 +43,8 @@ class ShowQrisScreen extends StatelessWidget {
       listen: false,
     ).generateQris(
       accountNo: accountNo,
-      invoiceNo: invoiceById.invoiceNo,
-      amount: amountBeforeAdmin,
+      invoiceNo: widget.invoiceById.invoiceNo,
+      amount: widget.amountBeforeAdmin,
     );
 
     void shareQRCode() async {
@@ -71,7 +71,17 @@ class ShowQrisScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: const GradientAppBar(title: 'Tagihan QRIS'),
+      appBar: GradientAppBar(
+        title: 'Tagihan QRIS',
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {});
+            },
+            icon: const Icon(Icons.refresh),
+          ),
+        ],
+      ),
       body: FutureBuilder(
         future: _qrisFuture,
         builder: (ctx, dataSnapshot) {
@@ -102,37 +112,51 @@ class ShowQrisScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           RingkasanQrisCard(
-                            amount: amountBeforeAdmin,
+                            amount: widget.amountBeforeAdmin,
                             adminFee: qrisInfo.adminFee,
                             totalAmount: qrisInfo.billAmount,
+                            useCustInfo: true,
+                            paymentType: PaymentType.qris,
                           ),
                           const SizedBox(height: 15),
-                          const SizedBox(height: 15),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 30),
-                            width: double.infinity,
-                            child: RepaintBoundary(
-                              key: globalKey,
-                              child: QrImage(
-                                data: qrisInfo.qrString,
-                                version: QrVersions.auto,
-                              ),
+                          Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
                             ),
-                          ),
-                          // const SizedBox(height: 15),
-                          TextButton(
-                            onPressed: () {
-                              try {
-                                shareQRCode();
-                              } catch (e) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Gagal mengunduh QR Code'),
+                            elevation: 8,
+                            child: Column(
+                              children: [
+                                const SizedBox(height: 12),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 30),
+                                  width: double.infinity,
+                                  child: RepaintBoundary(
+                                    key: globalKey,
+                                    child: QrImage(
+                                      data: qrisInfo.qrString,
+                                      version: QrVersions.auto,
+                                    ),
                                   ),
-                                );
-                              }
-                            },
-                            child: const Text('Bagikan QR Code'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    try {
+                                      shareQRCode();
+                                    } catch (e) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content:
+                                              Text('Gagal mengunduh QR Code'),
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  child: const Text('Bagikan QR Code'),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

@@ -12,3 +12,8 @@ enum GameType {
   free,
   chooseOne,
 }
+
+enum PaymentType {
+  qris,
+  alfamart,
+}

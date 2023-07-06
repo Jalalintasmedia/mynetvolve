@@ -146,3 +146,44 @@ class Qris2 {
         expiredAt = json['expired_at'] ?? '',
         createdAt = json['expired_at'] ?? '';
 }
+
+class AlfamartPayment {
+  String idPel;
+  String externalId;
+  String paymentId;
+  String paymentCode;
+  int billAmount;
+  int adminFee;
+  String status;
+  int expiredTime;
+  String expiredType;
+  String expiredAt;
+  String createdAt;
+
+  AlfamartPayment({
+    required this.idPel,
+    required this.externalId,
+    required this.paymentId,
+    required this.paymentCode,
+    required this.billAmount,
+    required this.adminFee,
+    required this.status,
+    required this.expiredTime,
+    required this.expiredType,
+    required this.expiredAt,
+    required this.createdAt,
+  });
+
+  AlfamartPayment.fromJson(Map<String?, dynamic> json)
+      : idPel = json['idpel'] ?? '',
+        externalId = json['external_id'] ?? '',
+        paymentId = json['payment_id'] ?? '',
+        paymentCode = json['payment_code'] ?? '',
+        billAmount = json['bill_amount'] ?? 0,
+        adminFee = json['adminFee'] ?? 0,
+        status = json['status'] ?? '',
+        expiredTime = json['expired_time'] ?? 0,
+        expiredType = json['expired_type'] ?? '',
+        expiredAt = json['expired_at'] ?? '',
+        createdAt = json['expired_at'] ?? '';
+}

@@ -81,7 +81,7 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
       if (err.toString().contains('INVALID USERLOGIN') ||
           err.toString().contains('INVALID ACCOUNT-NO or MOBILE PHONE')) {
         errMsg = 'No Pelanggan atau Passsword Salah';
-      } else if(err.toString().contains('Bnetfit')) {
+      } else if (err.toString().contains('Bnetfit')) {
         errMsg = err.toString();
       }
       _showErrMsg(errMsg);
@@ -184,6 +184,12 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
                           : GradientButton(
                               buttonHandle: _masuk,
                               text: 'Masuk',
+                              gradientColors: const [
+                                Color.fromRGBO(0, 171, 247, 1),
+                                Color.fromRGBO(0, 90, 253, 1),
+                              ],
+                              begin: Alignment.bottomLeft,
+                              end: Alignment.topRight,
                             ),
                     ],
                   ),

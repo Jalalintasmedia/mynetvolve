@@ -8,11 +8,13 @@ class DetailTagihanTile extends StatelessWidget {
     required this.title,
     required this.price,
     required this.isBold,
+    this.customString,
   }) : super(key: key);
 
   final String title;
   final double price;
   final bool isBold;
+  final String? customString;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class DetailTagihanTile extends StatelessWidget {
             fontSize: isBold ? 15 : 13),
       ),
       trailing: Text(
-        FORMAT_CURRENCY.format(price),
+        customString != null ? customString! : FORMAT_CURRENCY.format(price),
         style: TextStyle(
             fontWeight: isBold ? FontWeight.bold : null,
             fontSize: isBold ? 15 : 13),

@@ -63,10 +63,11 @@ class RoundedButton extends StatelessWidget {
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(
             borderRadius: borderRadius,
-            side: BorderSide(
-              color:
-                  useSide ? const Color.fromRGBO(0, 209, 255, 1) : Colors.white,
-            ),
+            side: useSide
+                ? const BorderSide(
+                    color: Color.fromRGBO(0, 209, 255, 1),
+                  )
+                : BorderSide.none,
           ),
         ),
         shadowColor: MaterialStateProperty.all(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mynetvolve/core/palette.dart';
 
 import 'rounded_button.dart';
 
@@ -9,6 +10,9 @@ class GradientButton extends StatelessWidget {
   final double? width;
   final bool useElevation;
   final bool useBorder;
+  final List<Color>? gradientColors;
+  final Alignment? begin;
+  final Alignment? end;
 
   const GradientButton({
     required this.buttonHandle,
@@ -17,6 +21,9 @@ class GradientButton extends StatelessWidget {
     this.width,
     this.useElevation = true,
     this.useBorder = true,
+    this.gradientColors,
+    this.begin,
+    this.end,
     Key? key,
   }) : super(key: key);
 
@@ -32,13 +39,16 @@ class GradientButton extends StatelessWidget {
         width: width ?? double.infinity,
         height: height ?? 60,
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [
-              Color.fromRGBO(0, 171, 247, 1),
-              Color.fromRGBO(0, 90, 253, 1),
-            ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
+          gradient: LinearGradient(
+            colors: gradientColors ??
+                [
+                  // Color.fromRGBO(0, 171, 247, 1),
+                  // Color.fromRGBO(0, 90, 253, 1),
+                  Palette.kToDark,
+                  Palette.kToDark.shade300
+                ],
+            begin: begin ?? Alignment.topCenter,
+            end: end ?? Alignment.bottomCenter,
             stops: [0.2, 1],
           ),
           borderRadius: borderRadius,

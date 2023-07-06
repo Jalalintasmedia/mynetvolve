@@ -16,8 +16,9 @@ class SplashScreen extends StatelessWidget {
             padding: const EdgeInsets.all(85),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: const [
-                NetvolveLogo(padding: 0),
+                Center(child: NetvolveLogo(padding: 0)),
               ],
             ),
           ),

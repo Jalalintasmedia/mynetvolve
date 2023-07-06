@@ -116,21 +116,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.dark,
-        child: SafeArea(
-          child: SizedBox(
-            width: double.infinity,
-            child: Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                Container(
-                  height: MediaQuery.of(context).size.height,
-                ),
-                topContainer(context),
-                Positioned.fill(
-                  top: MediaQuery.of(context).size.height * 0.22,
+        child: SizedBox(
+          width: double.infinity,
+          child: Stack(
+            children: [
+              ProfileGradientContainer(
+                editable: true,
+                imagePickFn: _takeImage,
+              ),
+              Positioned.fill(
+                top: 200 - MediaQuery.of(context).padding.top + 15,
                   left: 0,
                   right: 0,
                   bottom: 0,
+                child: SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: SingleChildScrollView(
@@ -170,8 +169,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -183,27 +182,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       buttonHandle: () => Provider.of<Auth>(context, listen: false).logout(),
       text: 'Logout',
       height: 50,
-    );
-  }
-
-  Widget topContainer(BuildContext context) {
-    return Stack(
-      children: [
-        ProfileGradientContainer(
-          screenName: '',
-          editable: true,
-          imagePickFn: _takeImage,
-        ),
-        const Positioned(
-          left: 0,
-          child: NetvolveLogoTopLeft(),
-        ),
-        Positioned(
-          top: (MediaQuery.of(context).size.height * 0.25) - 80,
-          left: 30,
-          child: nameWidget(),
-        ),
-      ],
+      useBorder: false,
     );
   }
 
