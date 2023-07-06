@@ -14,6 +14,7 @@ import 'package:mynetvolve/screens/profile/riwayat/efaktur_screen.dart';
 import 'package:mynetvolve/screens/profile/riwayat/pembelian_screen.dart';
 import 'package:mynetvolve/screens/profile/riwayat/tagihan_screen.dart';
 import 'package:mynetvolve/screens/scan_code/scan_qr_screen.dart';
+import 'package:mynetvolve/screens/speed_test_screen.dart';
 
 import '../screens/payment/bayar_tagihan_screen.dart';
 import '../screens/profile/riwayat/detail_tagihan_screen.dart';
@@ -61,4 +62,5 @@ Map<String, Widget Function(BuildContext)> routesMap = {
   RouteNames.SCAN_QR_ROUTE: (_) => const ScanQRScreen(),
   RouteNames.BANTUAN_DAN_KONTAK_ROUTE: (_) => const BantuanDanKontakScreen(),
   RouteNames.KANTOR_ROUTE: (_) => const KantorScreen(),
+  RouteNames.SPEED_TEST_ROUTE: (_) => const SpeedtestScreen(),
 };

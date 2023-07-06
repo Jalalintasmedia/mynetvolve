@@ -24,85 +24,74 @@ class InternetPackageContainer extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
       ),
-      child: FutureBuilder(
-        future: _productsFuture,
-        builder: (ctx, dataSnapshot) {
-          if (dataSnapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (dataSnapshot.hasError) {
-            return Text('An error occured: ${dataSnapshot.error}');
-          }
-          return Consumer<Products>(builder: (ctx, productData, _) {
-            final product = productData.custProducts![0];
-            final productService = product.services[0];
-            return Column(
+      child: Consumer<Products>(builder: (ctx, productData, _) {
+        final product = productData.custProducts![0];
+        final productService = product.services[0];
+        return Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      fit: FlexFit.loose,
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Palette.kToDark,
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Text(
-                          product.productName,
-                          style: const TextStyle(color: Colors.white, fontSize: 12),
-                        ),
-                      ),
+                Flexible(
+                  fit: FlexFit.loose,
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Palette.kToDark,
+                      borderRadius: BorderRadius.circular(50),
                     ),
-                    Row(
-                      children: const [
-                        Icon(
-                          Icons.language,
-                          color: Palette.kToDark,
-                        ),
-                        SizedBox(width: 3),
-                        Text(
-                          'Internet',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                    child: Text(
+                      product.productName,
+                      style: const TextStyle(color: Colors.white, fontSize: 12),
                     ),
-                  ],
+                  ),
                 ),
-                const Divider(color: Colors.grey),
                 Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '${productService.speedMbps} ${productService.uomDesc}',
-                            style: const TextStyle(
-                              color: Palette.kToDark,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            '${FORMAT_CURRENCY.format(product.monthlyFee)}/bln',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ],
-                      ),
+                  children: const [
+                    Icon(
+                      Icons.language,
+                      color: Palette.kToDark,
                     ),
-                    const SizedBox(width: 3),
-                    BayarButton(context: context)
+                    SizedBox(width: 3),
+                    Text(
+                      'Internet',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ],
-            );
-          });
-        },
-      ),
+            ),
+            const Divider(color: Colors.grey),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${productService.speedMbps} ${productService.uomDesc}',
+                        style: const TextStyle(
+                          color: Palette.kToDark,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        '${FORMAT_CURRENCY.format(product.monthlyFee)}/bln',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 3),
+                BayarButton(context: context)
+              ],
+            ),
+          ],
+        );
+      }),
     );
   }
 }

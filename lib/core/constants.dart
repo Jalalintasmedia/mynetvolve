@@ -59,6 +59,7 @@ class RouteNames {
   static const GAMES_ROUTE = '/games';
 
   static const SCAN_QR_ROUTE = '/scan-QR';
+  static const SPEED_TEST_ROUTE = '/speed-test';
 }
 
 class ToolTipString {

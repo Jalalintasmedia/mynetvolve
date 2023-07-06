@@ -133,36 +133,36 @@ class QrisProv with ChangeNotifier {
     }
   }
 
-  Future<List<GeneratedQr>?> getQristList() async {
-    final url = Uri.parse(IBOSS_API_URL + '/qrisapi');
-    try {
-      final response = await http.post(
-        url,
-        headers: {
-          'Authorization': 'Bearer $token',
-          'Content-Type': 'application/json',
-        },
-        body: json.encode(
-          {
-            "act": "getqrlist",
-            "time": timeStamp,
-            "t_account_id": tAccountId,
-          },
-        ),
-      );
+  // Future<List<GeneratedQr>?> getQristList() async {
+  //   final url = Uri.parse(IBOSS_API_URL + '/qrisapi');
+  //   try {
+  //     final response = await http.post(
+  //       url,
+  //       headers: {
+  //         'Authorization': 'Bearer $token',
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: json.encode(
+  //         {
+  //           "act": "getqrlist",
+  //           "time": timeStamp,
+  //           "t_account_id": tAccountId,
+  //         },
+  //       ),
+  //     );
 
-      final List<GeneratedQr> loadedQrList = [];
-      final extractedData = json.decode(response.body)['data'] as List;
+  //     final List<GeneratedQr> loadedQrList = [];
+  //     final extractedData = json.decode(response.body)['data'] as List;
 
-      extractedData.map((qris) {
-        var qrisData = GeneratedQr.fromJson(qris);
-        loadedQrList.add(qrisData);
-      }).toList();
-      return loadedQrList;
-    } catch (e) {
-      return [];
-    }
-  }
+  //     extractedData.map((qris) {
+  //       var qrisData = GeneratedQr.fromJson(qris);
+  //       loadedQrList.add(qrisData);
+  //     }).toList();
+  //     return loadedQrList;
+  //   } catch (e) {
+  //     return [];
+  //   }
+  // }
 
   Future<void> generateAlfamartCode({
     required String accountNo,
