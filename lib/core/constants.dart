@@ -28,7 +28,6 @@ class RouteNames {
 
   static const HOME_ROUTE = '/home';
   static const BERANDA_ROUTE = '/beranda';
-  static const PAKET_ROUTE = '/paket';
   static const CHAT_ROUTE = '/chat';
   static const LIVE_CHAT_ROUTE = '/live-chat';
   static const AREA_ROUTE = '/area';
@@ -52,11 +51,6 @@ class RouteNames {
 
   static const BANTUAN_DAN_KONTAK_ROUTE = '/bantuan-dan-kontak';
   static const KANTOR_ROUTE = '/kantor';
-
-  // paket
-  static const ADDONS_ROUTE = '/addons';
-  static const GANTI_PAKET_ROUTE = '/ganti-paket';
-  static const GAMES_ROUTE = '/games';
 
   static const SCAN_QR_ROUTE = '/scan-QR';
   static const SPEED_TEST_ROUTE = '/speed-test';

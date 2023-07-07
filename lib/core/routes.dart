@@ -1,11 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:mynetvolve/screens/auth/new_register_screen.dart';
 import 'package:mynetvolve/screens/auth/reset_password/reset_password_screen.dart';
-import 'package:mynetvolve/screens/paket/addons_screen.dart';
-import 'package:mynetvolve/screens/paket/games/games_screen.dart';
-import 'package:mynetvolve/screens/paket/ganti_paket_screen.dart';
 import 'package:mynetvolve/screens/payment/bayar_tagihan_screen.dart';
-import 'package:mynetvolve/screens/payment/show_qris_screen.dart';
 import 'package:mynetvolve/screens/profile/bantuan/bantuan_dan_kontak_screen.dart';
 import 'package:mynetvolve/screens/profile/bantuan/kantor_sceen.dart';
 import 'package:mynetvolve/screens/profile/ganti_password_screen.dart';
@@ -25,7 +21,6 @@ import '../screens/menu/chat_screen.dart';
 import '../screens/menu/live_chat_screen.dart';
 // import '../screens/login_screen.dart';
 import '../screens/auth/new_login_screen.dart';
-import '../screens/menu/paket_screen.dart';
 import '../screens/pemberitahuan_screen.dart';
 import '../screens/auth/pick_auth_screen.dart';
 import '../screens/menu/profile_screen.dart';
@@ -40,7 +35,6 @@ Map<String, Widget Function(BuildContext)> routesMap = {
   RouteNames.REGISTER_ROUTE: (_) => const NewRegisterScreen(),
   RouteNames.RESET_PASSWORD_ROUTE: (_) => const ResetPasswordScreen(),
   RouteNames.BERANDA_ROUTE: (_) => const BerandaScreen(),
-  RouteNames.PAKET_ROUTE: (_) => const PaketScreen(),
   RouteNames.CHAT_ROUTE: (_) => const ChatScreen(),
   RouteNames.LIVE_CHAT_ROUTE: (_) => const LiveChatScreen(),
   RouteNames.PROFILE_ROUTE: (_) => const ProfileScreen(),
@@ -56,9 +50,6 @@ Map<String, Widget Function(BuildContext)> routesMap = {
   RouteNames.IMAGE_ROUTE: (_) => const EfakturScreen(),
   RouteNames.GANTI_PASSWORD_ROUTE: (_) => const GantiPasswordScreen(),
   // RouteNames.VERIFIKASI_AKUN_ROUTE: (_) => const VerifikasiAkunScreen(),
-  RouteNames.ADDONS_ROUTE: (_) => const AddonsScreen(),
-  RouteNames.GANTI_PAKET_ROUTE: (_) => const GantiPaketScreen(),
-  RouteNames.GAMES_ROUTE: (_) => const GamesScreen(),
   RouteNames.SCAN_QR_ROUTE: (_) => const ScanQRScreen(),
   RouteNames.BANTUAN_DAN_KONTAK_ROUTE: (_) => const BantuanDanKontakScreen(),
   RouteNames.KANTOR_ROUTE: (_) => const KantorScreen(),

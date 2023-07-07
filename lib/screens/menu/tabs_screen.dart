@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mynetvolve/core/palette.dart';
 import 'package:mynetvolve/helpers/popups.dart';
-import 'package:mynetvolve/screens/menu/paket_screen.dart';
 import 'package:mynetvolve/screens/splash_screen.dart';
 import 'package:mynetvolve/widgets/buttons/gradient_button.dart';
-import 'package:mynetvolve/widgets/gradient_widget.dart';
 import 'package:notification_permissions/notification_permissions.dart';
 import 'package:provider/provider.dart';
 import 'package:showcaseview/showcaseview.dart';

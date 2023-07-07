@@ -4,7 +4,6 @@ import '../providers/auth.dart';
 import '../providers/banners_prov.dart';
 import '../providers/customer_profile.dart';
 import '../providers/faq_prov.dart';
-import '../providers/games_prov.dart';
 import '../providers/invoice_list.dart';
 import '../providers/network_info_prov.dart';
 import '../providers/notification_prov.dart';
@@ -77,14 +76,4 @@ final PROVIDERS_LIST = [
       // prevNetInfo!.networkInfo,
     ),
   ),
-  ChangeNotifierProxyProvider<Auth, GamesProv>(
-    create: (context) => GamesProv(null, null, null, [], []),
-    update: (ctx, auth, prevGames) => GamesProv(
-      auth.token,
-      auth.tAccountId,
-      auth.time,
-      prevGames!.gamesList,
-      prevGames.gameRewards,
-    ),
-  )
 ];

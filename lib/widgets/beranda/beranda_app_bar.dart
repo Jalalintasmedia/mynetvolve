@@ -41,61 +41,86 @@ class _BerandaAppBarState extends State<BerandaAppBar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  CircleAvatar(
-                    radius: 25,
-                    backgroundColor: Colors.white,
-                    backgroundImage: customer.profileFileId == ''
-                        ? const AssetImage(
-                            'assets/images/photo_placeholder.jpg')
-                        : MemoryImage(image!) as ImageProvider,
-                  ),
-                  const SizedBox(width: 15),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Halo, ${customer.accountName}',
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                      Row(
+              Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    CircleAvatar(
+                      radius: 25,
+                      backgroundColor: Colors.white,
+                      backgroundImage: customer.profileFileId == ''
+                          ? const AssetImage(
+                              'assets/images/photo_placeholder.jpg')
+                          : MemoryImage(image!) as ImageProvider,
+                    ),
+                    const SizedBox(width: 15),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            customer.accountNo,
+                            'Halo, ${customer.accountName}',
                             style: const TextStyle(color: Colors.white),
                           ),
-                          const SizedBox(width: 5),
-                          IconButton(
-                            onPressed: () =>
-                                copyText(copiedData: customer.accountNo),
-                            icon: const ImageIcon(
-                              AssetImage('assets/icons/copy.png'),
-                              color: Colors.white,
-                              size: 14,
-                            ),
-                            padding: EdgeInsets.zero,
-                            constraints: const BoxConstraints(),
+                          Row(
+                            children: [
+                              Text(
+                                customer.accountNo,
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                              const SizedBox(width: 5),
+                              Tooltip(
+                                message: 'Salin nomor akun',
+                                child: IconButton(
+                                  onPressed: () =>
+                                      copyText(copiedData: customer.accountNo),
+                                  icon: const ImageIcon(
+                                    AssetImage('assets/icons/copy.png'),
+                                    color: Colors.white,
+                                    size: 14,
+                                  ),
+                                  padding: EdgeInsets.zero,
+                                  constraints: const BoxConstraints(),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
+                    ),
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  Tooltip(
+                    message: ToolTipString.SCAN_PEGAWAI,
+                    child: IconButton(
+                      onPressed: () => Navigator.of(context)
+                          .pushNamed(RouteNames.SCAN_QR_ROUTE),
+                      icon: const ImageIcon(
+                        AssetImage('assets/icons/qr-scan.png'),
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  Tooltip(
+                    message: ToolTipString.NOTIFIKASI,
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushNamed(RouteNames.PEMBERITAHUAN_ROUTE);
+                      },
+                      icon: const Icon(
+                        Icons.notifications,
+                        color: Colors.white,
+                      ),
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(),
+                    ),
                   ),
                 ],
-              ),
-              IconButton(
-                onPressed: () {
-                  Navigator.of(context)
-                      .pushNamed(RouteNames.PEMBERITAHUAN_ROUTE);
-                },
-                icon: const Icon(
-                  Icons.notifications,
-                  color: Colors.white,
-                ),
-                padding: EdgeInsets.zero,
-                constraints: const BoxConstraints(),
               ),
             ],
           ),

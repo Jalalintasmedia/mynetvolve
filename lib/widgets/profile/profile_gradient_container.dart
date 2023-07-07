@@ -58,34 +58,36 @@ class ProfileGradientContainer extends StatelessWidget {
                         : MemoryImage(image!) as ImageProvider,
                   ),
                   const SizedBox(width: 15),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Halo, ${customer.accountName}',
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            customer.accountNo,
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                          const SizedBox(width: 5),
-                          IconButton(
-                            onPressed: () =>
-                                copyText(copiedData: customer.accountNo),
-                            icon: const ImageIcon(
-                              AssetImage('assets/icons/copy.png'),
-                              color: Colors.white,
-                              size: 14,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Halo, ${customer.accountName}',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              customer.accountNo,
+                              style: const TextStyle(color: Colors.white),
                             ),
-                            padding: EdgeInsets.zero,
-                            constraints: const BoxConstraints(),
-                          ),
-                        ],
-                      ),
-                    ],
+                            const SizedBox(width: 5),
+                            IconButton(
+                              onPressed: () =>
+                                  copyText(copiedData: customer.accountNo),
+                              icon: const ImageIcon(
+                                AssetImage('assets/icons/copy.png'),
+                                color: Colors.white,
+                                size: 14,
+                              ),
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

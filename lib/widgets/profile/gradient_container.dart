@@ -30,19 +30,19 @@ class GradientContainer extends StatelessWidget {
               end: Alignment.bottomCenter,
             ),
           ),
-        ),
-        Align(
-          alignment: Alignment.topRight,
-          child: LayoutBuilder(builder: (ctx, constraints) {
-            return SizedBox(
-              width: constraints.maxWidth * (3 / 4),
-              // height: 100,
-              child: Image.asset(
-                'assets/images/netvolve-icon-quarter.png',
-                opacity: const AlwaysStoppedAnimation(.7),
-              ),
-            );
-          }),
+          child: Align(
+            alignment: Alignment.topRight,
+            child: LayoutBuilder(builder: (ctx, constraints) {
+              return SizedBox(
+                // width: constraints.maxWidth * (3 / 4),
+                // height: 100,
+                child: Image.asset(
+                  'assets/images/netvolve-icon-quarter.png',
+                  opacity: const AlwaysStoppedAnimation(.7),
+                ),
+              );
+            }),
+          ),
         ),
         child,
       ],
