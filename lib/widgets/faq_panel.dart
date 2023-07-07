@@ -25,6 +25,14 @@ class _FaqPanelState extends State<FaqPanel> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              offset: Offset(5, 5),
+              blurRadius: 15.0,
+              spreadRadius: 1.0,
+            ),
+          ],
         ),
         constraints: const BoxConstraints(
           minHeight: 100,

@@ -107,7 +107,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       },
       {
         'onTap': () => Navigator.of(context).pushNamed(RouteNames.KANTOR_ROUTE),
-        'title': 'Kantor Bnetfit',
+        'title': 'Kantor Netvolve',
         'icon': 'office.png',
       },
     ];

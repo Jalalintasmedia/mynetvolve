@@ -13,8 +13,6 @@ class InternetPackageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late final _productsFuture =
-        Provider.of<Products>(context, listen: false).getCustProducts();
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 16,

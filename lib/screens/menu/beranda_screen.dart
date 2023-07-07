@@ -1,15 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:mynetvolve/core/constants.dart';
-import 'package:mynetvolve/core/palette.dart';
-import 'package:mynetvolve/widgets/beranda/carousel_top_container.dart';
-import 'package:mynetvolve/widgets/beranda/my_packages_widget.dart';
-import 'package:provider/provider.dart';
+// ignore_for_file: constant_identifier_names
 
+import 'package:flutter/material.dart';
+import 'package:mynetvolve/helpers/popups.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../core/palette.dart';
+import '../../widgets/beranda/carousel_top_container.dart';
+import '../../widgets/beranda/my_packages_widget.dart';
 import '../../providers/products.dart';
 import '../../widgets/beranda/beranda_app_bar.dart';
 import '../../widgets/beranda/internet_package_container.dart';
 
 class BerandaScreen extends StatefulWidget {
+  static const PREFERENCES_IS_FIRST_LAUNCH_STRING =
+      "PREFERENCES_IS_FIRST_LAUNCH_STRING";
   const BerandaScreen({Key? key}) : super(key: key);
 
   @override
@@ -17,8 +22,19 @@ class BerandaScreen extends StatefulWidget {
 }
 
 class _BerandaScreenState extends State<BerandaScreen> {
-  late final _productsFuture =
-      Provider.of<Products>(context, listen: false).getCustProducts();
+  late final _productsFuture = Provider.of<Products>(
+    context,
+    listen: false,
+  ).getCustProducts();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+      showEmailVerificationPopUp(context);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

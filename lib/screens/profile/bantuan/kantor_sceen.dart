@@ -42,19 +42,20 @@ class _KantorScreenState extends State<KantorScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const GradientAppBar(title: 'Kantor Bnetfit'),
+      appBar: const GradientAppBar(title: 'Kantor Netvolve'),
       body: Column(
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 0),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  ThemeColors.accentColor,
-                  Palette.kToDark,
-                ],
-              ),
-            ),
+            color: Palette.kToDark.shade300,
+            // decoration: const BoxDecoration(
+            //   gradient: LinearGradient(
+            //     colors: [
+            //       ThemeColors.accentColor,
+            //       Palette.kToDark,
+            //     ],
+            //   ),
+            // ),
             child: TabBar(
               controller: _tabController,
               indicatorColor: Colors.white,

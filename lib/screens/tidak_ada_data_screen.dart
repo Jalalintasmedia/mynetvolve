@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mynetvolve/core/palette.dart';
 
 class TidakAdaDataScreen extends StatelessWidget {
   const TidakAdaDataScreen({
@@ -26,10 +27,10 @@ class TidakAdaDataScreen extends StatelessWidget {
                     // BnetfitLogo(padding: 20),
                     ShaderMask(
                       shaderCallback: (bounds) {
-                        return const LinearGradient(
+                        return LinearGradient(
                           colors: [
-                            Color.fromRGBO(0, 236, 255, 0.5),
-                            Color.fromRGBO(0, 26, 255, 0.9),
+                            Palette.kToDark,
+                            Palette.kToDark.shade400
                           ],
                         ).createShader(bounds);
                       },

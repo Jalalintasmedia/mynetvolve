@@ -38,14 +38,7 @@ class _RiwayatScreenState extends State<RiwayatScreen>
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 0),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  ThemeColors.accentColor,
-                  Palette.kToDark,
-                ],
-              ),
-            ),
+            color: Palette.kToDark.shade300,
             child: TabBar(
               controller: _tabController,
               indicatorColor: Colors.white,
