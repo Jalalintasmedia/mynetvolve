@@ -8,6 +8,7 @@ void showCustomDialog({
   required String title,
   required String content,
   Widget? customButton,
+  VoidCallback? whenCompleteFunc,
 }) {
   final width = MediaQuery.of(context).size.width / 1.2;
   showDialog(
@@ -22,7 +23,6 @@ void showCustomDialog({
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
@@ -35,14 +35,25 @@ void showCustomDialog({
                   topRight: Radius.circular(15),
                 ),
               ),
-              child: Text(
-                title,
-                style: const TextStyle(color: Colors.white),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  IconButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(Icons.close, color: Colors.white),
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(
                 content,
                 textAlign: TextAlign.center,
@@ -52,18 +63,25 @@ void showCustomDialog({
               ),
             ),
             const SizedBox(height: 20),
-            customButton ?? GradientButton(
-              buttonHandle: () => Navigator.of(context).pop(),
-              text: 'Ok',
-              height: 40,
-              width: 80,
-            ),
+            customButton ??
+                GradientButton(
+                  buttonHandle: () => Navigator.of(context).pop(),
+                  text: 'Ok',
+                  height: 40,
+                  width: 80,
+                ),
             const SizedBox(height: 20),
           ],
         ),
       ),
     ),
-  );
+  ).whenComplete(() {
+    if (whenCompleteFunc != null) {
+      whenCompleteFunc();
+    } else {
+      null;
+    }
+  });
 }
 
 void showErrMsg(BuildContext context, String errMsg) {

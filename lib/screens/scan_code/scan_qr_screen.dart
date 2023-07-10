@@ -18,7 +18,7 @@ class _ScanQRScreenState extends State<ScanQRScreen> {
   final cameraController = MobileScannerController();
   var _screenOpened = false;
 
-  void _foundBarcode(Barcode barcode, MobileScannerArguments? args) {
+  void _foundBarcode(Barcode barcode, MobileScannerArguments? args) async {
     if (!_screenOpened) {
       final code = barcode.rawValue ?? '---';
       print('=== Barcode found! $code');
@@ -26,7 +26,6 @@ class _ScanQRScreenState extends State<ScanQRScreen> {
       final isBarcodeValid = code.contains('jlm.net.id/dt_team');
 
       if (!isBarcodeValid) {
-        // Navigator.of(context).pop();
         showCustomDialog(
           context: context,
           title: 'Peringatan!',
@@ -41,10 +40,11 @@ class _ScanQRScreenState extends State<ScanQRScreen> {
             height: 40,
             width: 200,
           ),
+          whenCompleteFunc: () => _screenOpened = false,
         );
         return;
       }
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context).push(
         MaterialPageRoute(
           builder: (ctx) => ScanQRResultScreen(
             value: code,

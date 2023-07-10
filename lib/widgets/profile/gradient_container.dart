@@ -19,29 +19,32 @@ class GradientContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-          width: double.infinity,
-          height: height,
-          decoration: BoxDecoration(
-            borderRadius: borderRadius,
-            gradient: LinearGradient(
-              colors: [Palette.kToDark, Palette.kToDark.shade400],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+        Align(
+          alignment: Alignment.topCenter,
+          child: Container(
+            width: double.infinity,
+            height: height,
+            decoration: BoxDecoration(
+              borderRadius: borderRadius,
+              gradient: LinearGradient(
+                colors: [Palette.kToDark, Palette.kToDark.shade400],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
             ),
-          ),
-          child: Align(
-            alignment: Alignment.topRight,
-            child: LayoutBuilder(builder: (ctx, constraints) {
-              return SizedBox(
-                // width: constraints.maxWidth * (3 / 4),
-                // height: 100,
-                child: Image.asset(
-                  'assets/images/netvolve-icon-quarter.png',
-                  opacity: const AlwaysStoppedAnimation(.7),
-                ),
-              );
-            }),
+            child: Align(
+              alignment: Alignment.topRight,
+              child: LayoutBuilder(builder: (ctx, constraints) {
+                return SizedBox(
+                  // width: constraints.maxWidth * (3 / 4),
+                  // height: 100,
+                  child: Image.asset(
+                    'assets/images/netvolve-icon-quarter.png',
+                    opacity: const AlwaysStoppedAnimation(.7),
+                  ),
+                );
+              }),
+            ),
           ),
         ),
         child,
