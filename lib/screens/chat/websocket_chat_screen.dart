@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-import '../../widgets/chat/chat_bubble.dart';
-import '../../widgets/chat/chat_input_widget.dart';
-import '../../widgets/gradient_app_bar.dart';
+import '../../../widgets/chat/chat_bubble.dart';
+import '../../../widgets/chat/chat_input_widget.dart';
+import '../../../widgets/gradient_app_bar.dart';
 
 class WebsocketChatScreen extends StatefulWidget {
   const WebsocketChatScreen({Key? key}) : super(key: key);

@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 import 'package:local_auth/local_auth.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:mynetvolve/core/constants.dart';
-import 'package:salesiq_mobilisten/salesiq_mobilisten.dart';
+// import 'package:salesiq_mobilisten/salesiq_mobilisten.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mynetvolve/models/http_exception.dart';
 
@@ -205,13 +205,13 @@ class Auth with ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       prefs.remove('userData');
 
-      ZohoSalesIQ.unregisterVisitor();
+      // ZohoSalesIQ.unregisterVisitor();
 
-      await ZohoSalesIQ.getChats().then((chatList) {
-        chatList.map((element) {
-          print(element.id);
-        }).toList();
-      }).catchError((err) => null);
+      // await ZohoSalesIQ.getChats().then((chatList) {
+      //   chatList.map((element) {
+      //     print(element.id);
+      //   }).toList();
+      // }).catchError((err) => null);
     } catch (e) {
       rethrow;
     }

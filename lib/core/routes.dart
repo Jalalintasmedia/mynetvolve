@@ -17,7 +17,7 @@ import '../screens/profile/info_akun_screen.dart';
 import '../screens/profile/riwayat_screen.dart';
 import '../screens/menu/beranda_screen.dart';
 import '../screens/menu/chat_screen.dart';
-import '../screens/menu/live_chat_screen.dart';
+import '../screens/chat/live_chat_screen.dart';
 // import '../screens/login_screen.dart';
 import '../screens/auth/new_login_screen.dart';
 import '../screens/pemberitahuan_screen.dart';
