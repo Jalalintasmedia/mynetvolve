@@ -2,13 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:mynetvolve/core/constants.dart';
-import 'package:mynetvolve/core/enums.dart';
-import 'package:mynetvolve/screens/profile/verifikasi_akun_screen.dart';
-import 'package:mynetvolve/widgets/gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../core/enums.dart';
+import '../../screens/profile/verifikasi_akun_screen.dart';
+import '../../widgets/gradient_app_bar.dart';
 import '../../helpers/custom_dialog.dart';
 import '../../providers/customer_profile.dart';
 import '../../widgets/buttons/rounded_button.dart';
@@ -52,15 +51,17 @@ class _InfoAkunScreenState extends State<InfoAkunScreen> {
         default:
           return;
       }
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (_) => VerifikasiAkunScreen(
-            data: data,
-            type: type,
-            name: name,
-          ),
-        ),
-      ).then((value) => setState(() {}));
+      Navigator.of(context)
+          .push(
+            MaterialPageRoute(
+              builder: (_) => VerifikasiAkunScreen(
+                data: data,
+                type: type,
+                name: name,
+              ),
+            ),
+          )
+          .then((value) => setState(() {}));
     } catch (e) {
       showErrMsg(context, '$e');
       return;
@@ -147,8 +148,9 @@ class _InfoAkunScreenState extends State<InfoAkunScreen> {
                                   if (value!.isEmpty) {
                                     return 'Nama tidak boleh kosong';
                                   }
+                                  return null;
                                 },
-                                onSaved: (value) {},
+                                onSaved: (value) => null,
                               ),
                               const SizedBox(height: 10),
                               AkunFormField(
@@ -160,34 +162,38 @@ class _InfoAkunScreenState extends State<InfoAkunScreen> {
                                   if (value!.isEmpty) {
                                     return 'Alamat tidak boleh kosong';
                                   }
+                                  return null;
                                 },
-                                onSaved: (value) {},
+                                onSaved: (value) => null,
                               ),
                               const SizedBox(height: 10),
                               AkunFormField(
-                                  cont: _emailCont,
-                                  text: 'Email',
-                                  textInputType: TextInputType.emailAddress,
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Email tidak boleh kosong';
-                                    }
-                                  },
-                                  onSaved: (value) {
-                                    _email = value!;
-                                  },
-                                  additionalInfo: _oldEmail != ''
-                                      ? _emailVerified == 'Y'
-                                          ? const Icon(
-                                              Icons.verified,
-                                              color: Colors.green,
-                                            )
-                                          : verifyButton(
-                                              OTPType.email,
-                                              custData.customer!.accountEmail,
-                                              custData.customer!.accountName,
-                                            )
-                                      : null),
+                                cont: _emailCont,
+                                text: 'Email',
+                                textInputType: TextInputType.emailAddress,
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Email tidak boleh kosong';
+                                  }
+                                  return null;
+                                },
+                                onSaved: (value) {
+                                  _email = value!;
+                                  return null;
+                                },
+                                additionalInfo: _oldEmail != ''
+                                    ? _emailVerified == 'Y'
+                                        ? const Icon(
+                                            Icons.verified,
+                                            color: Colors.green,
+                                          )
+                                        : verifyButton(
+                                            OTPType.email,
+                                            custData.customer!.accountEmail,
+                                            custData.customer!.accountName,
+                                          )
+                                    : null,
+                              ),
                               const SizedBox(height: 10),
                               AkunFormField(
                                 cont: _mobileCont,
@@ -198,8 +204,9 @@ class _InfoAkunScreenState extends State<InfoAkunScreen> {
                                   if (value!.isEmpty) {
                                     return 'Mobile tidak boleh kosong';
                                   }
+                                  return null;
                                 },
-                                onSaved: (value) {},
+                                onSaved: (value) => null,
                                 additionalInfo: _mobileVerified == 'Y'
                                     ? const Icon(
                                         Icons.verified,

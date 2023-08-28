@@ -2,10 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gallery_saver/gallery_saver.dart';
-import 'package:mynetvolve/core/enums.dart';
-import 'package:mynetvolve/helpers/link_director.dart';
 
 import 'loading/shimmer_widget.dart';
+import '../../helpers/link_director.dart';
 
 class ClickableImage extends StatefulWidget {
   final String image;
@@ -33,7 +32,7 @@ class _ClickableImageState extends State<ClickableImage> {
 
   void _showContextMenu(BuildContext context, String imgUrl) async {
     final RenderObject? overlay =
-        Overlay.of(context)?.context.findRenderObject();
+        Overlay.of(context).context.findRenderObject();
     final result = await showMenu(
       context: context,
       position: RelativeRect.fromRect(

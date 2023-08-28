@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
@@ -169,25 +168,26 @@ class QrisProv with ChangeNotifier {
     required String name,
     required String invoiceNo,
     required int amount,
+    required String tIspId,
   }) async {
-    print('===== generate alfamart prov CALLED');
+    print('===== generate alfamart prov CALLED. t_isp_id: $tIspId');
     final url = Uri.parse(PG_API_URL + '/otc.php');
-    final requestMap = {
-      'act': 'generate',
-      't_account_id': tAccountId,
-      'account_no': accountNo,
-      'fullname': name,
-      'mod': 'by_invoice',
-      'invoiceNo': invoiceNo,
-      'amount': amount,
-      't_isp_id': 1,
-    };
-    print('===== $requestMap');
     try {
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
-        body: json.encode(requestMap),
+        body: json.encode(
+          {
+            'act': 'generate',
+            't_account_id': tAccountId,
+            'account_no': accountNo,
+            'fullname': name,
+            'mod': 'by_invoice',
+            'invoiceNo': invoiceNo,
+            'amount': amount,
+            't_isp_id': 2,
+          },
+        ),
       );
       print('===== ALFAMART: ${response.body}');
       final responseData = json.decode(response.body);

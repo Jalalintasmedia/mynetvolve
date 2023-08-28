@@ -9,6 +9,7 @@ class CustomerSummary {
   String mobilePhoneVerified;
   String accountStatus;
   String accountBlockDate;
+  String tIspId;
   String invoiceNo;
   String currentBalance;
   String description;
@@ -33,6 +34,7 @@ class CustomerSummary {
     required this.mobilePhoneVerified,
     required this.accountStatus,
     required this.accountBlockDate,
+    required this.tIspId,
     required this.invoiceNo,
     required this.currentBalance,
     required this.description,
@@ -58,6 +60,7 @@ class CustomerSummary {
         mobilePhoneVerified = json['mobile_phone_verified'] ?? '',
         accountStatus = json['account_status'] ?? '',
         accountBlockDate = json['account_block_date'] ?? '',
+        tIspId = json['t_isp_id'] ?? '',
         invoiceNo = json['invoice_no'] ?? '',
         currentBalance = json['current_balance'] ?? '',
         description = json['description'] ?? '',
@@ -69,26 +72,26 @@ class CustomerSummary {
         pictExt = json['pict_ext'] ?? '',
         pictType = json['pict_type'] ?? '',
         pictContent = json['pict_content'] ?? '';
-  
+
   Map<String?, dynamic> toJson() => {
-    'account_no': accountNo,
-    'account_name': accountName,
-    'account_email': accountEmail,
-    'account_hp': accountHp,
-    'account_address_1': accountAddress1,
-    'account_address_2': accountAddress2,
-    'email_verified': emailVerified,
-    'mobile_phone_verified': mobilePhoneVerified,
-    'invoice_no': invoiceNo,
-    'current_balance': currentBalance,
-    'description': description,
-    'due_date': dueDate,
-    'period_end_date': periodEndDate,
-    'period_start_date': periodStartDate,
-    'statement_date': statementDate,
-    'profile_file_id': profileFileId,
-    'pict_ext': pictExt,
-    'pict_type': pictType,
-    'pict_content': pictContent,
-  };
+        'account_no': accountNo,
+        'account_name': accountName,
+        'account_email': accountEmail,
+        'account_hp': accountHp,
+        'account_address_1': accountAddress1,
+        'account_address_2': accountAddress2,
+        'email_verified': emailVerified,
+        'mobile_phone_verified': mobilePhoneVerified,
+        'invoice_no': invoiceNo,
+        'current_balance': currentBalance,
+        'description': description,
+        'due_date': dueDate,
+        'period_end_date': periodEndDate,
+        'period_start_date': periodStartDate,
+        'statement_date': statementDate,
+        'profile_file_id': profileFileId,
+        'pict_ext': pictExt,
+        'pict_type': pictType,
+        'pict_content': pictContent,
+      };
 }

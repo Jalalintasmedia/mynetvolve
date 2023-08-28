@@ -46,6 +46,7 @@ class MetodePembayaranTile extends StatelessWidget {
           iconColor: Palette.kToDark,
           collapsedIconColor: Colors.grey,
           childrenPadding: const EdgeInsets.symmetric(horizontal: 15),
+          tilePadding: const EdgeInsets.symmetric(horizontal: 10),
           children: [
             contentWidget,
           ],

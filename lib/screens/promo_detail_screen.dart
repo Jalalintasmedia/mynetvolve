@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:mynetvolve/helpers/link_director.dart';
-import 'package:mynetvolve/widgets/clickable_image.dart';
-import 'package:mynetvolve/widgets/gradient_app_bar.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import '../../helpers/link_director.dart';
+import '../../widgets/clickable_image.dart';
+import '../../widgets/gradient_app_bar.dart';
 
 class PromoDetailScreen extends StatelessWidget {
   const PromoDetailScreen({

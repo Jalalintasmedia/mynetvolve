@@ -15,14 +15,14 @@ class NewRegisterScreen extends StatefulWidget {
 
 class _NewRegisterScreenState extends State<NewRegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey();
-  var _namaLengkap;
-  var _noHP;
-  var _noKTP;
-  var _email;
-  final _namaLengkapController = TextEditingController();
-  final _noHpController = TextEditingController();
-  final _noKTPController = TextEditingController();
-  final _emailController = TextEditingController();
+  var namaLengkap;
+  var noHP;
+  var noKTP;
+  var email;
+  final namaLengkapController = TextEditingController();
+  final noHPController = TextEditingController();
+  final noKTPController = TextEditingController();
+  final emailController = TextEditingController();
 
   void _lanjutRegister() {
     if (!_formKey.currentState!.validate()) {
@@ -32,10 +32,10 @@ class _NewRegisterScreenState extends State<NewRegisterScreen> {
     // Navigator.of(context).push(
     //   MaterialPageRoute(
     //     builder: (ctx) => SubmitLocationScreen(
-    //       namaLengkap: _namaLengkap,
-    //       noHP: _noHP,
-    //       noKTP: _noKTP,
-    //       alamatEmail: _email,
+    //       namaLengkap: namaLengkap,
+    //       noHP: noHP,
+    //       noKTP: noKTP,
+    //       alamatEmail: email,
     //     ),
     //   ),
     // );
@@ -60,7 +60,7 @@ class _NewRegisterScreenState extends State<NewRegisterScreen> {
       child: Column(
         children: [
           RegisterFormField(
-            cont: _namaLengkapController,
+            cont: namaLengkapController,
             text: 'Nama Lengkap',
             isPassword: false,
             textInputType: TextInputType.name,
@@ -68,14 +68,16 @@ class _NewRegisterScreenState extends State<NewRegisterScreen> {
               if (value!.isEmpty) {
                 return 'Nama Lengkap Harus Diisi';
               }
+              return null;
             },
             onSaved: (value) {
-              _namaLengkap = value!;
+              namaLengkap = value!;
+              return null;
             },
           ),
           const SizedBox(height: 10),
           RegisterFormField(
-            cont: _noHpController,
+            cont: noHPController,
             text: 'Nomor Handphone',
             isPassword: false,
             textInputType: TextInputType.number,
@@ -83,14 +85,16 @@ class _NewRegisterScreenState extends State<NewRegisterScreen> {
               if (value!.isEmpty) {
                 return 'Nomor Handphone Harus Diisi';
               }
+              return null;
             },
             onSaved: (value) {
-              _noHP = value!;
+              noHP = value!;
+              return null;
             },
           ),
           const SizedBox(height: 10),
           RegisterFormField(
-            cont: _noKTPController,
+            cont: noKTPController,
             text: 'Nomor KTP',
             isPassword: false,
             textInputType: TextInputType.number,
@@ -98,14 +102,16 @@ class _NewRegisterScreenState extends State<NewRegisterScreen> {
               if (value!.isEmpty) {
                 return 'Nomor KTP Harus Diisi';
               }
+              return null;
             },
             onSaved: (value) {
-              _noKTP = value!;
+              noKTP = value!;
+              return null;
             },
           ),
           const SizedBox(height: 10),
           RegisterFormField(
-            cont: _emailController,
+            cont: emailController,
             text: 'Alamat Email',
             isPassword: false,
             textInputType: TextInputType.emailAddress,
@@ -116,9 +122,11 @@ class _NewRegisterScreenState extends State<NewRegisterScreen> {
               } else if (!emailValid) {
                 return 'Alamat Email Tidak Valid';
               }
+              return null;
             },
             onSaved: (value) {
-              _email = value!;
+              email = value!;
+              return null;
             },
           ),
         ],

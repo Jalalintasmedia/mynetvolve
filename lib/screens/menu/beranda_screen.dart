@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:mynetvolve/helpers/popups.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../core/palette.dart';
 import '../../widgets/beranda/carousel_top_container.dart';
@@ -30,7 +29,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       showEmailVerificationPopUp(context);
     });
   }

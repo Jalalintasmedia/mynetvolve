@@ -152,11 +152,14 @@ class AlfamartPayment {
   String externalId;
   String paymentId;
   String paymentCode;
-  int billAmount;
+  int amount;
   int adminFee;
+  int billAmount;
   String status;
   int expiredTime;
   String expiredType;
+  bool isSingleUse;
+  String expirationDate;
   String expiredAt;
   String createdAt;
 
@@ -165,11 +168,14 @@ class AlfamartPayment {
     required this.externalId,
     required this.paymentId,
     required this.paymentCode,
-    required this.billAmount,
+    required this.amount,
     required this.adminFee,
+    required this.billAmount,
     required this.status,
     required this.expiredTime,
     required this.expiredType,
+    required this.isSingleUse,
+    required this.expirationDate,
     required this.expiredAt,
     required this.createdAt,
   });
@@ -179,11 +185,14 @@ class AlfamartPayment {
         externalId = json['external_id'] ?? '',
         paymentId = json['payment_id'] ?? '',
         paymentCode = json['payment_code'] ?? '',
-        billAmount = json['bill_amount'] ?? 0,
+        amount = json['amount'] ?? 0,
         adminFee = json['adminFee'] ?? 0,
+        billAmount = json['bill_amount'] ?? 0,
         status = json['status'] ?? '',
         expiredTime = json['expired_time'] ?? 0,
         expiredType = json['expired_type'] ?? '',
+        isSingleUse = json['is_single_use'] ?? true,
+        expirationDate = json['expiration_date'] ?? '',
         expiredAt = json['expired_at'] ?? '',
         createdAt = json['expired_at'] ?? '';
 }

@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mynetvolve/core/palette.dart';
-import 'package:mynetvolve/models/tiket.dart';
 import 'package:mynetvolve/providers/tiket_prov.dart';
 import 'package:mynetvolve/widgets/loading/shimmer_list_view.dart';
 import 'package:mynetvolve/widgets/profile/riwayat/aktivitas_shimmer.dart';
 import 'package:provider/provider.dart';
-import 'package:dotted_line/dotted_line.dart';
 
 import '../../../widgets/profile/riwayat/aktivitas_list_view.dart';
-import '../../../widgets/profile/riwayat/ticket_tile.dart';
 import '../../tidak_ada_data_screen.dart';
 
 class AktivitasScreen extends StatefulWidget {

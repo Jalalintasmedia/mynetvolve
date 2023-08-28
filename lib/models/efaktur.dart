@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class Efaktur {
   final String tEfakturId;
   final String tFileId;

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:mynetvolve/widgets/clickable_image.dart';
-import 'package:mynetvolve/widgets/loading/shimmer_widget.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../circle_indicator.dart';
+import '../clickable_image.dart';
+import '../loading/shimmer_widget.dart';
 
 class ImagesCarousel extends StatefulWidget {
   final double height;

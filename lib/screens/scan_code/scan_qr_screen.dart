@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:mynetvolve/helpers/call_cs.dart';
-import 'package:mynetvolve/helpers/custom_dialog.dart';
-import 'package:mynetvolve/screens/scan_code/scan_qr_result_screen.dart';
-import 'package:mynetvolve/widgets/gradient_app_bar.dart';
 
 import '../../widgets/buttons/gradient_button.dart';
+import '../../helpers/call_cs.dart';
+import '../../helpers/custom_dialog.dart';
+import '../../screens/scan_code/scan_qr_result_screen.dart';
+import '../../widgets/gradient_app_bar.dart';
 
 class ScanQRScreen extends StatefulWidget {
   const ScanQRScreen({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class _ScanQRScreenState extends State<ScanQRScreen> {
   final cameraController = MobileScannerController();
   var _screenOpened = false;
 
-  void _foundBarcode(Barcode barcode, MobileScannerArguments? args) async {
+  void _foundBarcode(Barcode barcode) async {
     if (!_screenOpened) {
       final code = barcode.rawValue ?? '---';
       print('=== Barcode found! $code');
@@ -98,9 +98,10 @@ class _ScanQRScreenState extends State<ScanQRScreen> {
         ],
       ),
       body: MobileScanner(
-        allowDuplicates: true,
+        // allowDuplicates: true,
         controller: cameraController,
-        onDetect: _foundBarcode,
+        // onDetect: _foundBarcode,
+        onDetect: (barcode) => _foundBarcode(barcode.barcodes.first),
       ),
     );
   }

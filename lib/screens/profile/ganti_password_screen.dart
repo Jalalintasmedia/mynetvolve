@@ -2,14 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:mynetvolve/core/palette.dart';
-import 'package:mynetvolve/helpers/custom_dialog.dart';
-import 'package:mynetvolve/widgets/buttons/gradient_button.dart';
-import 'package:mynetvolve/widgets/profile/akun_form_field.dart';
-import 'package:mynetvolve/widgets/profile/profile_gradient_container.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../helpers/custom_dialog.dart';
+import '../../widgets/profile/akun_form_field.dart';
 import '../../providers/customer_profile.dart';
 import '../../widgets/buttons/rounded_button.dart';
 import '../../widgets/gradient_app_bar.dart';
@@ -23,7 +20,7 @@ class GantiPasswordScreen extends StatefulWidget {
 
 class _GantiPasswordScreenState extends State<GantiPasswordScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey();
-  late String _passwordLama;
+  late String passwordLama;
   late String _passwordBaru;
   final _passwordLamaCont = TextEditingController();
   final _passwordBaruCont = TextEditingController();
@@ -67,7 +64,7 @@ class _GantiPasswordScreenState extends State<GantiPasswordScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       var prefs = await SharedPreferences.getInstance();
       final userLoginInfo = json.decode(prefs.getString('userLoginInfo')!)
           as Map<String, dynamic>;
@@ -117,9 +114,11 @@ class _GantiPasswordScreenState extends State<GantiPasswordScreen> {
                       } else if (value != _savedPasswordLama) {
                         return 'Password salah';
                       }
+                      return null;
                     },
                     onSaved: (value) {
-                      _passwordLama = value!;
+                      passwordLama = value!;
+                      return null;
                     },
                   ),
                   const SizedBox(height: 10),
@@ -134,9 +133,11 @@ class _GantiPasswordScreenState extends State<GantiPasswordScreen> {
                       } else if (value.length < 8) {
                         return 'Password minimal terdiri dari 8 karakter';
                       }
+                      return null;
                     },
                     onSaved: (value) {
                       _passwordBaru = value!;
+                      return null;
                     },
                   ),
                 ],

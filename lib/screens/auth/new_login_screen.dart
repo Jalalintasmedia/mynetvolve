@@ -222,9 +222,11 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
                 if (value!.isEmpty) {
                   return 'Nomor Pelanggan Harus Diisi';
                 }
+                return null;
               },
               onSaved: (value) {
                 _nomorPelanggan = value!;
+                return null;
               },
               autofillHints: const [AutofillHints.username],
             ),
@@ -238,9 +240,11 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
                 if (value!.isEmpty) {
                   return 'Password Harus Diisi';
                 }
+                return null;
               },
               onSaved: (value) {
                 _password = value!;
+                return null;
               },
               autofillHints: const [AutofillHints.password],
             ),

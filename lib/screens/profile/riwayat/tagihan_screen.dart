@@ -17,7 +17,7 @@ class TagihanScreen extends StatefulWidget {
 }
 
 class _TagihanScreenState extends State<TagihanScreen> {
-  bool _isChecked = false;
+  // bool _isChecked = false;
 
   Future<void> _refreshInvoice(BuildContext context) async {
     await Provider.of<InvoiceList>(context, listen: false).getInvoices();

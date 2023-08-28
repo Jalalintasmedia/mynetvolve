@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mynetvolve/screens/profile/riwayat/aktivitas_screen.dart';
-import 'package:mynetvolve/screens/profile/riwayat/pembelian_screen.dart';
-import 'package:mynetvolve/screens/profile/riwayat/tagihan_screen.dart';
 
 import '../../core/palette.dart';
+import '../../screens/profile/riwayat/aktivitas_screen.dart';
+import '../../screens/profile/riwayat/pembelian_screen.dart';
+import '../../screens/profile/riwayat/tagihan_screen.dart';
 import '../../widgets/gradient_app_bar.dart';
-import '../../widgets/profile/profile_gradient_container.dart';
 
 class RiwayatScreen extends StatefulWidget {
   const RiwayatScreen({Key? key}) : super(key: key);

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/netvolve_logo.dart';
 import '../../widgets/auth/gradient_background.dart';
-import '../../widgets/buttons/gradient_button.dart';
 import '../../widgets/buttons/rounded_button.dart';
 import '../../core/constants.dart';
 

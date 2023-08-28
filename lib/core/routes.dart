@@ -1,18 +1,17 @@
 import 'package:flutter/widgets.dart';
-import 'package:mynetvolve/screens/auth/new_register_screen.dart';
-import 'package:mynetvolve/screens/auth/reset_password/reset_password_screen.dart';
-import 'package:mynetvolve/screens/payment/bayar_tagihan_screen.dart';
-import 'package:mynetvolve/screens/profile/bantuan/bantuan_dan_kontak_screen.dart';
-import 'package:mynetvolve/screens/profile/bantuan/kantor_sceen.dart';
-import 'package:mynetvolve/screens/profile/ganti_password_screen.dart';
-import 'package:mynetvolve/screens/profile/riwayat/aktivitas_screen.dart';
-import 'package:mynetvolve/screens/profile/riwayat/efaktur_screen.dart';
-import 'package:mynetvolve/screens/profile/riwayat/pembelian_screen.dart';
-import 'package:mynetvolve/screens/profile/riwayat/tagihan_screen.dart';
 import 'package:mynetvolve/screens/scan_code/scan_qr_screen.dart';
-import 'package:mynetvolve/screens/speed_test_screen.dart';
 
+import '../screens/auth/new_register_screen.dart';
+import '../screens/auth/reset_password/reset_password_screen.dart';
 import '../screens/payment/bayar_tagihan_screen.dart';
+import '../screens/profile/bantuan/bantuan_dan_kontak_screen.dart';
+import '../screens/profile/bantuan/kantor_sceen.dart';
+import '../screens/profile/ganti_password_screen.dart';
+import '../screens/profile/riwayat/aktivitas_screen.dart';
+import '../screens/profile/riwayat/efaktur_screen.dart';
+import '../screens/profile/riwayat/pembelian_screen.dart';
+import '../screens/profile/riwayat/tagihan_screen.dart';
+import '../screens/speed_test_screen.dart';
 import '../screens/profile/riwayat/detail_tagihan_screen.dart';
 import '../screens/profile/info_akun_screen.dart';
 import '../screens/profile/riwayat_screen.dart';
@@ -25,7 +24,6 @@ import '../screens/pemberitahuan_screen.dart';
 import '../screens/auth/pick_auth_screen.dart';
 import '../screens/menu/profile_screen.dart';
 import '../screens/menu/tabs_screen.dart';
-import '../screens/profile/verifikasi_akun_screen.dart';
 import 'constants.dart';
 
 Map<String, Widget Function(BuildContext)> routesMap = {

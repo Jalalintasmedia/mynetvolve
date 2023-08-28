@@ -3,7 +3,6 @@ import 'dart:io' as io;
 import 'package:flutter/material.dart';
 import 'package:mynetvolve/core/constants.dart';
 import 'package:mynetvolve/providers/customer_profile.dart';
-import 'package:mynetvolve/screens/websocket_chat_screen.dart';
 import 'package:mynetvolve/widgets/gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:salesiq_mobilisten/salesiq_mobilisten.dart';

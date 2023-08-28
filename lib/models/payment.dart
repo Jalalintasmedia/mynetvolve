@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class Payment {
   final String tPaymentId;
   final String transactionDate;

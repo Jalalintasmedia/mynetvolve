@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mynetvolve/widgets/loading/shimmer_list_view.dart';
-import 'package:mynetvolve/widgets/profile/riwayat/pembelian_shimmer.dart';
 import 'package:provider/provider.dart';
 
+import '../../../widgets/loading/shimmer_list_view.dart';
+import '../../../widgets/profile/riwayat/pembelian_shimmer.dart';
 import '../../../providers/products.dart';
 import '../../../screens/tidak_ada_data_screen.dart';
 import '../../../widgets/profile/riwayat/paket_tile.dart';
-import '../../../widgets/loading/shimmer_widget.dart';
 
 class PembelianScreen extends StatefulWidget {
   const PembelianScreen({Key? key}) : super(key: key);

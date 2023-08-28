@@ -27,8 +27,7 @@ class _TabsScreenState extends State<TabsScreen> {
   var _selectedPageIndex = 0;
 
   void askPermission() {
-    Future<PermissionStatus> permissionStatus =
-        NotificationPermissions.requestNotificationPermissions();
+    NotificationPermissions.requestNotificationPermissions();
   }
 
   @override

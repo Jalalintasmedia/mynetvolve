@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mynetvolve/core/palette.dart';
-import 'package:mynetvolve/models/customer_product.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/constants.dart';
+import '../../core/palette.dart';
 import '../../providers/products.dart';
-import 'bayar_button.dart';
 
 class MyPackagesWidget extends StatelessWidget {
   const MyPackagesWidget({

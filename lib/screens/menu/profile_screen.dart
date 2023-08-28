@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mynetvolve/widgets/profile/profile_gradient_container.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +11,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 import '../../core/constants.dart';
 import '../../providers/auth.dart';
 import '../../providers/customer_profile.dart';
-import '../../widgets/netvolve_logo_top_left.dart';
 import '../../widgets/buttons/gradient_button.dart';
 import '../../widgets/profile/pengaturan_list_panel.dart';
 
@@ -68,7 +66,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    String _nama;
     List<Map<String, dynamic>> _pengaturanList = [
       {
         'onTap': () =>

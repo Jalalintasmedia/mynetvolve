@@ -62,6 +62,7 @@ class _CircleProfilePictureState extends State<CircleProfilePicture> {
       widget.imagePickFn!(image);
       Navigator.of(context).pop();
     } on PlatformException catch (e) {
+      print('===== $e');
       return;
     }
   }

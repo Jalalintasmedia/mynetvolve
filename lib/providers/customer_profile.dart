@@ -75,6 +75,7 @@ class CustomerProfile with ChangeNotifier {
           pictType: '',
           pictContent: '',
           activateFingerprint: false,
+          tIspId: '',
         );
         throw HttpException(customerMap['msg']);
       }
@@ -113,6 +114,7 @@ class CustomerProfile with ChangeNotifier {
         pictType: '',
         pictContent: '',
         activateFingerprint: false,
+        tIspId: '',
       );
       rethrow;
     }

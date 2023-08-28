@@ -101,8 +101,8 @@ class DetailTagihanScreen extends StatelessWidget {
             var invoiceDetail = invoiceInfo.invoiceDetails;
             var payment = invoiceInfo.payment;
             var statementDate = invoiceById.statementDate;
-            var startDate = invoiceById.periodStartDate.replaceAll('-', ' ');
-            var endDate = invoiceById.periodEndDate.replaceAll('-', ' ');
+            // var startDate = invoiceById.periodStartDate.replaceAll('-', ' ');
+            // var endDate = invoiceById.periodEndDate.replaceAll('-', ' ');
             var periodeTagihan =
                 '${getMonthFromString(statementDate)} ${statementDate.substring(statementDate.length - 4)}';
             var taxTotal = 0.0;

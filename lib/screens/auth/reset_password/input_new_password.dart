@@ -106,12 +106,15 @@ class _InputNewPasswordState extends State<InputNewPassword> {
                               if (value!.isEmpty) {
                                 return 'Password Baru Harus Diisi';
                               }
+                              return null;
                             },
                             onChanged: (value) {
                               _password = value!;
+                              return null;
                             },
                             onSaved: (value) {
                               _password = value!;
+                              return null;
                             },
                           ),
                           const SizedBox(height: 10),
@@ -124,8 +127,9 @@ class _InputNewPasswordState extends State<InputNewPassword> {
                               if (value != _password) {
                                 return 'Password Tidak Sama!';
                               }
+                              return null;
                             },
-                            onSaved: (_) {},
+                            onSaved: (_) => null,
                           ),
                           const SizedBox(height: 40),
                           GradientButton(

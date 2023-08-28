@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:showcaseview/showcaseview.dart';
 
-import '../../core/constants.dart';
 import '../../providers/banners_prov.dart';
 import 'images_carousel.dart';
 

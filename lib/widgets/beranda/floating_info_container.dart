@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mynetvolve/helpers/string_formatter.dart';
-import 'package:mynetvolve/providers/products.dart';
 import 'package:provider/provider.dart';
 
 import '../../helpers/string_formatter.dart';
+import '../../providers/products.dart';
 import '../../providers/customer_profile.dart';
 import '../paket_info_widget.dart';
 import 'bayar_button.dart';

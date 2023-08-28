@@ -14,6 +14,17 @@ class ScanQRResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = WebViewController.fromPlatformCreationParams(
+      const PlatformWebViewControllerCreationParams(),
+    );
+    controller
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      // ..loadRequest(Uri.parse('https://google.com'));
+      ..loadRequest(Uri.parse('https://jlm.net.id'))
+      ..setNavigationDelegate(NavigationDelegate(
+        onWebResourceError: (error) => print('===== WEBVIEW ERROR: $error'),
+      ));
+
     return Scaffold(
       appBar: GradientAppBar(
         title: 'Employee Profile',
@@ -25,9 +36,12 @@ class ScanQRResultScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back),
         ),
       ),
-      body: WebView(
-        initialUrl: value,
-        javascriptMode: JavascriptMode.unrestricted,
+      // body: WebView(
+      //   initialUrl: value,
+      //   javascriptMode: JavascriptMode.unrestricted,
+      // ),
+      body: WebViewWidget(
+        controller: controller,
       ),
     );
   }

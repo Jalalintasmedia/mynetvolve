@@ -3,16 +3,16 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:mynetvolve/core/enums.dart';
-import 'package:mynetvolve/core/palette.dart';
-import 'package:mynetvolve/helpers/custom_dialog.dart';
-import 'package:mynetvolve/providers/customer_profile.dart';
-import 'package:mynetvolve/widgets/buttons/gradient_button.dart';
-import 'package:mynetvolve/widgets/gradient_app_bar.dart';
-import 'package:mynetvolve/widgets/profile/profile_gradient_container.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../core/enums.dart';
+import '../../core/palette.dart';
+import '../../helpers/custom_dialog.dart';
+import '../../providers/customer_profile.dart';
+import '../../widgets/buttons/gradient_button.dart';
+import '../../widgets/gradient_app_bar.dart';
 
 class VerifikasiAkunScreen extends StatefulWidget {
   const VerifikasiAkunScreen({

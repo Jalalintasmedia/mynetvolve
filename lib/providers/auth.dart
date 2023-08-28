@@ -10,7 +10,6 @@ import 'package:http/http.dart' as http;
 import 'package:local_auth/local_auth.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:mynetvolve/core/constants.dart';
-import 'package:mynetvolve/screens/menu/beranda_screen.dart';
 import 'package:salesiq_mobilisten/salesiq_mobilisten.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mynetvolve/models/http_exception.dart';
@@ -71,11 +70,11 @@ class Auth with ChangeNotifier {
     if (Platform.isAndroid) {
       final deviceInfo = await deviceInfoPlugin.androidInfo;
       deviceOSType = 'android';
-      deviceOSversion = deviceInfo.version.release!;
+      deviceOSversion = deviceInfo.version.release;
     } else if (Platform.isIOS) {
       final deviceInfo = await deviceInfoPlugin.iosInfo;
       deviceOSType = 'iOS';
-      deviceOSversion = deviceInfo.systemVersion!;
+      deviceOSversion = deviceInfo.systemVersion;
     }
 
     print('===== $deviceOSType: $deviceOSversion');
@@ -212,7 +211,7 @@ class Auth with ChangeNotifier {
         chatList.map((element) {
           print(element.id);
         }).toList();
-      }).catchError((err) => print(err));
+      }).catchError((err) => null);
     } catch (e) {
       rethrow;
     }

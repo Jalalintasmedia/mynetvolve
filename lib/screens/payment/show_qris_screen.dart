@@ -3,16 +3,16 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mynetvolve/models/invoice.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../core/enums.dart';
 import '../../helpers/save_image.dart';
+import '../../models/invoice.dart';
 import '../../providers/customer_profile.dart';
-import '../../providers/qris_prov.dart';
 import '../../widgets/gradient_app_bar.dart';
 import '../../widgets/payment/ringkasan_qris_card.dart';
+import '../../providers/qris_prov.dart';
 
 class ShowQrisScreen extends StatefulWidget {
   const ShowQrisScreen({
@@ -133,7 +133,11 @@ class _ShowQrisScreenState extends State<ShowQrisScreen> {
                                   width: double.infinity,
                                   child: RepaintBoundary(
                                     key: globalKey,
-                                    child: QrImage(
+                                    // child: QrImage(
+                                    //   data: qrisInfo.qrString,
+                                    //   version: QrVersions.auto,
+                                    // ),
+                                    child: QrImageView(
                                       data: qrisInfo.qrString,
                                       version: QrVersions.auto,
                                     ),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mynetvolve/helpers/copy_text.dart';
 
 class CopyButton extends StatelessWidget {

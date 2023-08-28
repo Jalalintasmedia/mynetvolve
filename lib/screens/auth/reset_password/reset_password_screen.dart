@@ -149,9 +149,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               if (value!.isEmpty) {
                 return 'Nomor Pelanggan Harus Diisi';
               }
+              return null;
             },
             onSaved: (value) {
               _accountNo = value!;
+              return null;
             },
           ),
           const SizedBox(height: 10),
@@ -167,9 +169,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               } else if (!emailValid) {
                 return 'Alamat Email Tidak Valid';
               }
+              return null;
             },
             onSaved: (value) {
               _email = value!;
+              return null;
             },
           ),
           const SizedBox(height: 40),
