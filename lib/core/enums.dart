@@ -16,4 +16,15 @@ enum GameType {
 enum PaymentType {
   qris,
   alfamart,
+  va,
+}
+
+enum BankType {
+  bri,
+  bni,
+  permata,
+  bankSahabatSampoerna,
+  cimbNiaga,
+  bjb,
+  bsi
 }

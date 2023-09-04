@@ -34,10 +34,12 @@ class _ShowQrisScreenState extends State<ShowQrisScreen> {
   @override
   Widget build(BuildContext context) {
     final globalKey = GlobalKey();
-    final accountNo = Provider.of<CustomerProfile>(
+    final customerData = Provider.of<CustomerProfile>(
       context,
       listen: false,
-    ).customer!.accountNo;
+    ).customer!;
+    final accountNo = customerData.accountNo;
+    final tIspId = customerData.tIspId;
     late final _qrisFuture = Provider.of<QrisProv>(
       context,
       listen: false,
@@ -45,6 +47,7 @@ class _ShowQrisScreenState extends State<ShowQrisScreen> {
       accountNo: accountNo,
       invoiceNo: widget.invoiceById.invoiceNo,
       amount: widget.amountBeforeAdmin,
+      tIspId: tIspId,
     );
 
     void shareQRCode() async {
@@ -53,8 +56,9 @@ class _ShowQrisScreenState extends State<ShowQrisScreen> {
             .findRenderObject() as RenderRepaintBoundary;
         var image = await boundary.toImage();
 
-        ByteData? byteData =
-            await image.toByteData(format: ImageByteFormat.png);
+        ByteData? byteData = await image.toByteData(
+          format: ImageByteFormat.png,
+        );
 
         Uint8List pngBytes = byteData!.buffer.asUint8List();
         var datetime = DateTime.now();

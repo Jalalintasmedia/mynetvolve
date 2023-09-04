@@ -196,3 +196,36 @@ class AlfamartPayment {
         expiredAt = json['expired_at'] ?? '',
         createdAt = json['expired_at'] ?? '';
 }
+
+class VAPayment {
+  String idPel;
+  String externalId;
+  String paymentId;
+  String vaNo;
+  int amount;
+  int adminFee;
+  int billAmount;
+  String status;
+  int expiredTime;
+  String expiredType;
+  bool isSingleUse;
+  String expirationDate;
+  String expiredAt;
+  String createdAt;
+
+  VAPayment.fromJson(Map<String?, dynamic> json) 
+      : idPel = json['idpel'] ?? '',
+        externalId = json['external_id'] ?? '',
+        paymentId = json['payment_id'] ?? '',
+        vaNo = json['va_no'] ?? '',
+        amount = json['amount'] ?? 0,
+        adminFee = json['adminFee'] ?? 0,
+        billAmount = json['bill_amount'] ?? 0,
+        status = json['status'] ?? '',
+        expiredTime = json['expired_time'] ?? 0,
+        expiredType = json['expired_type'] ?? '',
+        isSingleUse = json['is_single_use'] ?? true,
+        expirationDate = json['expiration_date'] ?? '',
+        expiredAt = json['expired_at'] ?? '',
+        createdAt = json['expired_at'] ?? '';
+}

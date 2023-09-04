@@ -19,17 +19,17 @@ class NomorPembayaran {
 
   static List<NomorPembayaran> vaList = [
     NomorPembayaran(
-      nama: 'Virtual Account Mandiri',
+      nama: 'Bank Mandiri',
       image: 'mandiri-logo.png',
       nomor: '8891897',
     ),
     NomorPembayaran(
-      nama: 'Virtual Account Danamon',
+      nama: 'Bank Danamon',
       image: 'danamon-logo.png',
       nomor: '8880097',
     ),
     NomorPembayaran(
-      nama: 'Virtual Account BCA',
+      nama: 'BCA',
       image: 'bca-logo.png',
       nomor: '1068597',
     ),

@@ -16,6 +16,7 @@ class ShowCodeScreenContent extends StatelessWidget {
     required this.paymentCode,
     required this.tutorialText,
     required this.expirationDate,
+    this.logo,
   }) : super(key: key);
 
   final int amount;
@@ -25,6 +26,7 @@ class ShowCodeScreenContent extends StatelessWidget {
   final String paymentCode;
   final String tutorialText;
   final String expirationDate;
+  final String? logo;
 
   @override
   Widget build(BuildContext context) {
@@ -54,17 +56,21 @@ class ShowCodeScreenContent extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                   child: Column(
                     children: [
-                      const Text('Kode Pembayaran:'),
+                      if (logo != null)
+                        SizedBox(
+                          height: 40,
+                          child: Image.asset('assets/images/${logo!}'),
+                        ),
+                      // const Text('Kode Pembayaran:'),
                       const SizedBox(height: 5),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Expanded(
-                            child: Text(
-                              paymentCode,
-                              style: const TextStyle(
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          Text(
+                            paymentCode,
+                            style: TextStyle(
+                              fontSize: paymentType == PaymentType.va ? 20 : 32,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           IconButton(
@@ -111,22 +117,25 @@ class ShowCodeScreenContent extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25),
                 ),
                 elevation: 8,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(
-                        top: 15,
-                        left: 15,
-                        right: 15,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(
+                          top: 15,
+                          left: 7,
+                          right: 7,
+                        ),
+                        child: Text(
+                          'Cara Pembayaran:',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
-                      child: Text(
-                        'Cara Pembayaran:',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Html(data: tutorialText),
-                  ],
+                      Html(data: tutorialText),
+                    ],
+                  ),
                 ),
               ),
             ),

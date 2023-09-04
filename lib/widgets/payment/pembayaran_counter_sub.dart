@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../helpers/payment_text.dart';
 import '../../models/invoice.dart';
 import 'metode_pembayaran_tile.dart';
 import '../../screens/payment/show_alfamart_code_screen.dart';
@@ -18,27 +19,19 @@ class PembayaranCounterSub extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const alfamartText =
-        '''<ol><li>Kunjungi gerai Alfamart/Alfamidi/Lawson/DAN+DAN terdekat sebelum kode pembayaran kadaluwarsa</li>
-<li>Informasikan ke Kasir untuk melakukan pembayaran ke produk/servis Bnetfit.</li>
-<li>Berikan informasi KODE PEMBAYARAN yang tertera di MyBNetFit atau Xpress BNetFit kepada kasir.</li>
-<li>Pastikan jumlah pembayaran sama dengan jumlah yang diberitahukan oleh kasir.</li>
-<li>Minta struk pembayaran sebagai bukti transaksi dari Alfamart.</li>
-<li>Pembayaran Alfamart anda sudah selesai.</li></ol>''';
-
     return ExpansionPembayaranSub(
       title: 'Bayar di Counter',
       children: [
         GeneratePembayaranTile(
           title: 'Alfamart',
           image: 'alfamart-logo.png',
-          tutorialText: alfamartText,
+          tutorialText: PaymentTutorialText.alfamartText,
           onPressed: () => Navigator.of(context).push(
             MaterialPageRoute(
               builder: (_) => ShowAlfamartCodeScreen(
                 invoiceNo: invoiceById.invoiceNo,
                 amount: invoiceById.currentBalance.toInt(),
-                tutorialText: alfamartText,
+                tutorialText: PaymentTutorialText.alfamartText,
               ),
             ),
           ),

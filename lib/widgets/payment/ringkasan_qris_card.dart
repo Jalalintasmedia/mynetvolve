@@ -29,6 +29,20 @@ class RingkasanQrisCard extends StatelessWidget {
     ).customer!;
     final accountNo = customer.accountNo;
     final accountName = customer.accountName;
+    var textBiayaAdmin = 'Biaya Admin';
+
+    switch (paymentType) {
+      case PaymentType.alfamart:
+        textBiayaAdmin = '$textBiayaAdmin Alfamart';
+        break;
+      case PaymentType.qris:
+        textBiayaAdmin = '$textBiayaAdmin QRIS';
+        break;
+      case PaymentType.va:
+        textBiayaAdmin = '$textBiayaAdmin Virtual Account';
+        break;
+      default:
+    }
 
     return Card(
       shape: RoundedRectangleBorder(
@@ -72,9 +86,7 @@ class RingkasanQrisCard extends StatelessWidget {
               isBold: false,
             ),
             DetailTagihanTile(
-              title: paymentType == PaymentType.qris
-                  ? 'Biaya Admin QRIS'
-                  : 'Biaya Admin Alfamart',
+              title: textBiayaAdmin,
               price: adminFee.toDouble(),
               isBold: false,
             ),
