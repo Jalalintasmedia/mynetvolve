@@ -84,6 +84,7 @@ class BayarTagihanScreen extends StatelessWidget {
                               VirtualAccountSub(
                                 invoiceById: invoiceById,
                                 list: _vaList,
+                                accountNo: accountNo,
                               ),
                             ],
                           ),

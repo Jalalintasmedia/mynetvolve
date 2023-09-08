@@ -34,63 +34,6 @@ class QrisProv with ChangeNotifier {
 
   VAPayment? get vaPayment => _vaPayment;
 
-  Future<void> generateNewQris() async {
-    final url = Uri.parse(IBOSS_API_URL + '/qrisapi');
-    try {
-      // List<GeneratedQr>? _qrList = await _getQristList();
-      // if ((_qrList![0].qrId == _qris!.qrId) &&
-      //     (_qrList[0].status == 'GENERATE')) {
-      //   _qris = _qris;
-      // } else {
-      final response = await http.post(
-        url,
-        headers: {
-          'Authorization': 'Bearer $token',
-          'Content-Type': 'application/json',
-        },
-        body: json.encode(
-          {
-            "act": "generate",
-            "t_account_id": tAccountId,
-            "mod": 'by_invoice',
-          },
-        ),
-      );
-      final responseData = json.decode(response.body);
-      if (responseData['code'] != '0000') {
-        if (responseData['code'] == '0005') {
-          throw ('Silakan coba beberapa saat lagi');
-        }
-        // else if (responseData['code'] == '0041') {
-        //   throw
-        // }
-        throw (responseData['msg']);
-      }
-
-      var expiryTime = DateTime.now().add(const Duration(hours: 1));
-
-      Map<String?, dynamic> qrisMap = responseData['data'];
-      _qris = Qris.fromJson(qrisMap, expiryTime);
-      // }
-    } catch (e) {
-      _qris = Qris(
-        amount: 0,
-        merchantType: '',
-        idPel: '',
-        productId: '',
-        qrText: '',
-        qrId: '',
-        billAmount: 0,
-        admin: 0,
-        img: '',
-        rc: '',
-        status: '',
-        expiryTime: DateTime.now(),
-      );
-      rethrow;
-    }
-  }
-
   Future<void> generateQris({
     required String accountNo,
     required String invoiceNo,
@@ -138,37 +81,6 @@ class QrisProv with ChangeNotifier {
       rethrow;
     }
   }
-
-  // Future<List<GeneratedQr>?> getQristList() async {
-  //   final url = Uri.parse(IBOSS_API_URL + '/qrisapi');
-  //   try {
-  //     final response = await http.post(
-  //       url,
-  //       headers: {
-  //         'Authorization': 'Bearer $token',
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: json.encode(
-  //         {
-  //           "act": "getqrlist",
-  //           "time": timeStamp,
-  //           "t_account_id": tAccountId,
-  //         },
-  //       ),
-  //     );
-
-  //     final List<GeneratedQr> loadedQrList = [];
-  //     final extractedData = json.decode(response.body)['data'] as List;
-
-  //     extractedData.map((qris) {
-  //       var qrisData = GeneratedQr.fromJson(qris);
-  //       loadedQrList.add(qrisData);
-  //     }).toList();
-  //     return loadedQrList;
-  //   } catch (e) {
-  //     return [];
-  //   }
-  // }
 
   Future<void> generateAlfamartCode({
     required String accountNo,

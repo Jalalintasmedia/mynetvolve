@@ -4,6 +4,7 @@ import 'package:flutter_html/flutter_html.dart';
 import '../../core/enums.dart';
 import '../../helpers/copy_text.dart';
 import '../../helpers/custom_dialog.dart';
+import '../../helpers/link_director.dart';
 import '../../widgets/payment/ringkasan_qris_card.dart';
 
 class ShowCodeScreenContent extends StatelessWidget {
@@ -96,19 +97,6 @@ class ShowCodeScreenContent extends StatelessWidget {
                 ),
               ),
             ),
-            // const SizedBox(height: 10),
-            // Container(
-            //   width: double.infinity,
-            //   padding: const EdgeInsets.symmetric(horizontal: 15),
-            //   decoration: BoxDecoration(
-            //     borderRadius: BorderRadius.circular(25),
-            //     color: Colors.red,
-            //   ),
-            //   child: Text(
-            //     expirationDate,
-            //     style: const TextStyle(color: Colors.white),
-            //   ),
-            // ),
             const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
@@ -133,7 +121,19 @@ class ShowCodeScreenContent extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Html(data: tutorialText),
+                      Html(
+                        data: tutorialText,
+                        style: {
+                          'ol': Style(
+                            padding: const EdgeInsets.only(bottom: 12),
+                          ),
+                        },
+                        onLinkTap: (url, _, __, ___) async {
+                          final uri = Uri.parse(url!);
+                          print('URL: $url, URI: $uri');
+                          openExternalApplication(url);
+                        },
+                      ),
                     ],
                   ),
                 ),
