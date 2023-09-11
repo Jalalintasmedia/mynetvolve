@@ -168,7 +168,7 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const NetvolveLogo(padding: 70),
+                      const NetvolveLogo(),
                       const SizedBox(height: 40),
                       loginForm(),
                       const SizedBox(height: 20),

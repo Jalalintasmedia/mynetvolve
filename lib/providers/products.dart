@@ -20,6 +20,7 @@ class Products with ChangeNotifier {
   }
 
   Future<void> getCustProducts() async {
+    print('===== CALLING PRODUCTS FUTURE');
     final url = Uri.parse(IBOSS_API_URL + '/ibossapi');
     try {
       final response = await http.post(

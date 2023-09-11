@@ -90,7 +90,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const NetvolveLogo(padding: 70),
+                    const NetvolveLogo(),
                     const SizedBox(height: 40),
                     emailForm(),
                   ],

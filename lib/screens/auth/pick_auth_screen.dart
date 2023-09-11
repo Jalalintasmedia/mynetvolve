@@ -23,7 +23,7 @@ class PickAuthScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const NetvolveLogo(padding: 0),
+                  const NetvolveLogo(),
                   const SizedBox(
                     height: 60,
                   ),

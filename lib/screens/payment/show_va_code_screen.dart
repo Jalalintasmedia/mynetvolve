@@ -42,7 +42,7 @@ class _ShowVACodeScreenState extends State<ShowVACodeScreen> {
         break;
       case BankType.permata:
         logo = 'permata-bank-logo.png';
-        bankName = 'Permata';
+        bankName = 'PERMATA';
         break;
       case BankType.bankSahabatSampoerna:
         logo = 'bank-sampoerna-logo.png';

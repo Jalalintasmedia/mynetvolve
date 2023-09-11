@@ -8,17 +8,17 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       resizeToAvoidBottomInset: false,
       body: GradientBackground(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(85),
+            padding: EdgeInsets.all(85),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Center(child: NetvolveLogo(padding: 0)),
+              children: [
+                Center(child: NetvolveLogo()),
               ],
             ),
           ),
