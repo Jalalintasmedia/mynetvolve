@@ -44,8 +44,8 @@ class InternetPackageContainer extends StatelessWidget {
                     ),
                   ),
                 ),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Icon(
                       Icons.language,
                       color: Palette.kToDark,

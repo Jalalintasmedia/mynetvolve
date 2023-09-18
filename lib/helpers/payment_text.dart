@@ -260,4 +260,40 @@ class PaymentTutorialText {
 	<li>Masukkan Nomor Virtual Account</li>
 	<li>Konfirmasi detail transaksi anda</li>
 </ol>''';
+
+  static const otherBankText = '''<strong>ATM</strong>
+
+<ol>
+	<li>Pilih Menu lain</li>
+	<li>Pilih Transfer</li>
+	<li>Pilih dari rekening tabungan</li>
+	<li>Pilih ke rek. Bank lain</li>
+	<li>Masukkan kode bank dilanjutkan dengan nomor Virtual Account anda (BNI 009+xxxxxxxxxxxxxxx)</li>
+	<li>Input Nominal yang ditagihkan sebagai Nominal Transfer</li>
+	<li>Selesai, transaksi berhasil</li>
+</ol>
+
+<strong>INTERNET BANKING</strong>
+
+<ol>
+	<li>Masukan User ID dan Password​​​​​​</li>
+	<li>Pilih Transfer</li>
+	<li>Pilih ke rek. Bank lain</li>
+	<li>Pilih bank tujuan</li>
+	<li>Masukkan nomor Virtual Account anda (BNI xxxxxxxxxxxxxxx)</li>
+	<li>Input Nominal yang ditagihkan sebagai Nominal Transfer</li>
+	<li>Selesai, transaksi berhasil</li>
+</ol>
+
+<strong>MOBILE BANKING</strong>
+
+<ol>
+	<li>Masukan User ID dan Password</li>
+	<li>Pilih Transfer</li>
+	<li>Pilih ke rek. Bank lain</li>
+	<li>Pilih bank tujuan</li>
+	<li>Masukkan nomor Virtual Account anda (BNI xxxxxxxxxxxxxxx)</li>
+	<li>Input Nominal yang ditagihkan sebagai Nominal Transfer</li>
+	<li>Selesai, transaksi berhasil</li>
+</ol>''';
 }

@@ -108,7 +108,7 @@ class Auth with ChangeNotifier {
         throw HttpException(responseData['msg']);
       }
       if (responseData['data']['t_isp_id'] != '1') {
-        throw HttpException('Tidak dapat login menggunakan akun Bnetfit');
+        throw HttpException('Tidak dapat login menggunakan selain akun Netvolve');
       }
 
       // new token based on extracted data

@@ -8,11 +8,13 @@ class MetodePembayaranTile extends StatelessWidget {
     required this.title,
     required this.image,
     required this.contentWidget,
+    this.noImage = false,
   }) : super(key: key);
 
   final String title;
   final String image;
   final Widget contentWidget;
+  final bool noImage;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class MetodePembayaranTile extends StatelessWidget {
         ),
         child: ExpansionTile(
           expandedCrossAxisAlignment: CrossAxisAlignment.end,
-          leading: LayoutBuilder(
+          leading: noImage ? null : LayoutBuilder(
             builder: (ctx, constraints) => SizedBox(
               width: constraints.maxWidth * 0.25,
               child: Image.asset('assets/images/$image'),

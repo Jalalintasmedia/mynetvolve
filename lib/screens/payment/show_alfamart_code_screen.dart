@@ -1,3 +1,4 @@
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -79,7 +80,11 @@ class _ShowAlfamartCodeScreenState extends State<ShowAlfamartCodeScreen> {
               paymentType: PaymentType.alfamart,
               paymentCode: alfamartPayment.paymentCode,
               tutorialText: widget.tutorialText,
-              expirationDate: alfamartPayment.expirationDate
+              expirationDate: alfamartPayment.expirationDate,
+              customWidget: BarcodeWidget(
+                data: alfamartPayment.paymentCode,
+                barcode: Barcode.code128(),
+              ),
             );
           });
         },

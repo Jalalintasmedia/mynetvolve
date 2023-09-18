@@ -29,7 +29,7 @@ class ShowVACodeScreen extends StatefulWidget {
 class _ShowVACodeScreenState extends State<ShowVACodeScreen> {
   @override
   Widget build(BuildContext context) {
-    var logo = '';
+    String? logo;
     var bankName = '';
     switch (widget.bankType) {
       case BankType.bri:
@@ -60,6 +60,10 @@ class _ShowVACodeScreenState extends State<ShowVACodeScreen> {
         logo = 'bsi-logo.png';
         bankName = 'BSI';
         break;
+      case BankType.otherBank:
+        logo = null;
+        bankName = 'BNI';
+        break;
       default:
     }
 
@@ -84,7 +88,9 @@ class _ShowVACodeScreenState extends State<ShowVACodeScreen> {
 
     return Scaffold(
       appBar: GradientAppBar(
-        title: 'Tagihan VA $bankName',
+        title: widget.bankType == BankType.otherBank
+            ? 'Tagihan VA Bank Lain'
+            : 'Tagihan VA $bankName',
         actions: [
           IconButton(
             onPressed: () {

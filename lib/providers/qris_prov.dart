@@ -90,7 +90,7 @@ class QrisProv with ChangeNotifier {
     required String tIspId,
   }) async {
     print(
-      '===== generate alfamart prov CALLED. t_isp_id: $tIspId, account no: $accountNo, name: $name, invoice no: $invoiceNo, amount: $amount',
+      '===== generate alfamart prov CALLED. t_isp_id: $tIspId, tAccountId: $tAccountId, account no: $accountNo, name: $name, invoice no: $invoiceNo, amount: $amount',
     );
     final url = Uri.parse('$PG_API_URL/otc-netvolve.php');
     try {

@@ -135,6 +135,25 @@ class VirtualAccountSub extends StatelessWidget {
           buttonText: 'Generate Kode VA',
         ),
         const SizedBox(height: 5),
+        GeneratePembayaranTile(
+          title: 'Bank Lain',
+          image: 'bsi-logo.png',
+          noImage: true,
+          tutorialText:
+              'Transfer antar bank menggunakan online transfer (RTOL)',
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => ShowVACodeScreen(
+                invoiceNo: invoiceById.invoiceNo,
+                amount: invoiceById.currentBalance.toInt(),
+                tutorialText: PaymentTutorialText.otherBankText,
+                bankType: BankType.otherBank,
+              ),
+            ),
+          ),
+          buttonText: 'Generate Kode VA',
+        ),
+        const SizedBox(height: 5),
         MetodePembayaranTile(
           title: list[0].nama,
           image: list[0].image,

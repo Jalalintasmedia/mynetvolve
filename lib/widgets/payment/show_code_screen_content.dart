@@ -18,6 +18,7 @@ class ShowCodeScreenContent extends StatelessWidget {
     required this.tutorialText,
     required this.expirationDate,
     this.logo,
+    this.customWidget,
   }) : super(key: key);
 
   final int amount;
@@ -28,6 +29,7 @@ class ShowCodeScreenContent extends StatelessWidget {
   final String tutorialText;
   final String expirationDate;
   final String? logo;
+  final Widget? customWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -62,15 +64,16 @@ class ShowCodeScreenContent extends StatelessWidget {
                           height: 40,
                           child: Image.asset('assets/images/${logo!}'),
                         ),
-                      // const Text('Kode Pembayaran:'),
+                      if(logo == null) const Text('Kode Pembayaran:'),
                       const SizedBox(height: 5),
+                      if(customWidget != null) customWidget!,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             paymentCode,
-                            style: TextStyle(
-                              fontSize: paymentType == PaymentType.va ? 20 : 32,
+                            style: const TextStyle(
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

@@ -13,6 +13,7 @@ class GeneratePembayaranTile extends StatelessWidget {
     required this.tutorialText,
     required this.onPressed,
     required this.buttonText,
+    this.noImage = false,
   }) : super(key: key);
 
   final String title;
@@ -20,12 +21,14 @@ class GeneratePembayaranTile extends StatelessWidget {
   final String tutorialText;
   final VoidCallback onPressed;
   final String buttonText;
+  final bool noImage;
 
   @override
   Widget build(BuildContext context) {
     return MetodePembayaranTile(
       title: title,
       image: image,
+      noImage: noImage,
       contentWidget: Padding(
         padding: const EdgeInsets.only(bottom: 15),
         child: Column(

@@ -83,7 +83,7 @@ dependencies:
   expandable_page_view: ^1.0.13
   web_socket_channel: ^2.4.0
   flutter_inappwebview: ^5.7.2+3
-  # salesiq_mobilisten: ^3.1.0
+  barcode_widget: ^2.0.4
 
 dev_dependencies:
   flutter_test:

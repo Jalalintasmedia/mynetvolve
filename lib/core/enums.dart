@@ -26,5 +26,6 @@ enum BankType {
   bankSahabatSampoerna,
   cimbNiaga,
   bjb,
-  bsi
+  bsi,
+  otherBank,
 }
