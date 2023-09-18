@@ -152,13 +152,13 @@ class DetailTagihanScreen extends StatelessWidget {
                 detailTagihan(invoiceDetail),
                 DetailTagihanTile(
                   title: 'PPN',
-                  price: taxTotal,
+                  price: taxTotal.toInt(),
                   isBold: false,
                 ),
                 const SizedBox(height: 10),
                 DetailTagihanTile(
                   title: 'Tagihan Bulan Ini',
-                  price: invoiceById.currentBalance,
+                  price: invoiceById.currentBalance.toInt(),
                   isBold: true,
                 ),
               ],
@@ -199,7 +199,7 @@ class DetailTagihanScreen extends StatelessWidget {
       itemCount: invoiceDetail!.length,
       itemBuilder: (ctx, i) => DetailTagihanTile(
         title: invoiceDetail[i].nameFull,
-        price: invoiceDetail[i].amount,
+        price: invoiceDetail[i].amount.toInt(),
         isBold: false,
       ),
     );

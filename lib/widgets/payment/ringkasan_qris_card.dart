@@ -82,12 +82,12 @@ class RingkasanQrisCard extends StatelessWidget {
             const SizedBox(height: 5),
             DetailTagihanTile(
               title: 'Tagihan',
-              price: amount.toDouble(),
+              price: amount,
               isBold: false,
             ),
             DetailTagihanTile(
               title: textBiayaAdmin,
-              price: adminFee.toDouble(),
+              price: adminFee,
               isBold: false,
             ),
             // const SizedBox(height: 10),
@@ -98,8 +98,9 @@ class RingkasanQrisCard extends StatelessWidget {
             // const SizedBox(height: 10),
             DetailTagihanTile(
               title: 'Total Tagihan',
-              price: totalAmount.toDouble(),
+              price: totalAmount,
               isBold: true,
+              copyButton: true,
             ),
           ],
         ),

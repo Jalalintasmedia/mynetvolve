@@ -48,13 +48,13 @@ class RingkasanCard extends StatelessWidget {
               itemCount: invoiceDetail!.length,
               itemBuilder: (ctx, i) => DetailTagihanTile(
                 title: invoiceDetail![i].name,
-                price: invoiceDetail![i].amount,
+                price: invoiceDetail![i].amount.toInt(),
                 isBold: false,
               ),
             ),
             DetailTagihanTile(
               title: 'PPN',
-              price: taxTotal,
+              price: taxTotal.toInt(),
               isBold: false,
             ),
             if (anotherField != null) anotherField!,
@@ -66,7 +66,9 @@ class RingkasanCard extends StatelessWidget {
             // const SizedBox(height: 10),
             DetailTagihanTile(
               title: 'Total Tagihan',
-              price: total ?? invoiceById.currentBalance,
+              price: total != null
+                  ? total!.toInt()
+                  : invoiceById.currentBalance.toInt(),
               isBold: true,
             ),
           ],
