@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:mynetvolve/core/palette.dart';
 import 'package:mynetvolve/helpers/popups.dart';
@@ -32,7 +34,9 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   void initState() {
-    askPermission();
+    if (Platform.isAndroid) {
+      askPermission();
+    }
     _pages = [
       const BerandaScreen(),
       const ChatScreen(),
