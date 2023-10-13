@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mynetvolve/core/constants.dart';
+import 'package:mynetvolve/screens/chat/qiscus_chat_screen.dart';
 // import 'package:mynetvolve/screens/chat/websocket_chat_screen.dart';
 // import 'package:mynetvolve/providers/customer_profile.dart';
 // import 'package:mynetvolve/screens/websocket_chat_screen.dart';
@@ -109,7 +110,10 @@ class _ChatScreenState extends State<ChatScreen> {
             // onPressed: () => Navigator.of(context).push(
             //   MaterialPageRoute(builder: (_) => const WebsocketChatScreen()),
             // ),
-            onPressed: () => Navigator.of(context).pushNamed(RouteNames.LIVE_CHAT_ROUTE),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const QiscusChatScreen()),
+            ),
+            // onPressed: () => Navigator.of(context).pushNamed(RouteNames.LIVE_CHAT_ROUTE),
             text: 'Mulai Chat!',
             useSide: true,
             useShadow: false,

@@ -153,8 +153,10 @@ class _LiveChatScreenState extends State<LiveChatScreen> {
           InAppWebView(
             key: webViewKey,
             initialUrlRequest: URLRequest(
-                url: Uri.parse(
-                    'https://tawk.to/chat/639fceabb0d6371309d50efd/1gkk3uk92')),
+              url: Uri.parse(
+                'https://pgapi.jlm.net.id/livetalkmania/index.php?p=lc&sp=big&ssp=2&sssp=en',
+              ),
+            ),
             initialOptions: options,
             pullToRefreshController: pullToRefreshController,
             onWebViewCreated: (controller) {
@@ -166,8 +168,7 @@ class _LiveChatScreenState extends State<LiveChatScreen> {
                 urlController.text = this.url;
               });
             },
-            androidOnPermissionRequest:
-                (controller, origin, resources) async {
+            androidOnPermissionRequest: (controller, origin, resources) async {
               return PermissionRequestResponse(
                   resources: resources,
                   action: PermissionRequestResponseAction.GRANT);
@@ -224,7 +225,9 @@ class _LiveChatScreenState extends State<LiveChatScreen> {
             },
           ),
           progress < 1
-              ? const Center(child: CircularProgressIndicator(),)
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
               : Container(),
         ],
       ),

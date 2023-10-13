@@ -84,6 +84,7 @@ dependencies:
   web_socket_channel: ^2.4.0
   flutter_inappwebview: ^5.7.2+3
   barcode_widget: ^2.0.4
+  qiscus_multichannel_widget: ^1.1.9
 
 dev_dependencies:
   flutter_test:
