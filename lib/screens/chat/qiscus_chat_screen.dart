@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:mynetvolve/providers/customer_profile.dart';
 import 'package:mynetvolve/widgets/buttons/rounded_button.dart';
@@ -13,37 +14,41 @@ class QiscusChatScreen extends StatefulWidget {
 }
 
 class _QiscusChatScreenState extends State<QiscusChatScreen> {
+  var _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    return QMultichannelProvider(
-      appId: 'xjdmu-wt7turq3zovo16e',
-      builder: (ctx) => Scaffold(
-        appBar: const GradientAppBar(title: 'Chat With Us'),
-        body: QMultichannelConsumer(
-          builder: (ctx, ref) {
-            return Column(
-              children: [
-                RoundedButton(
-                  onPressed: () {
-                    final cust =
-                        prov.Provider.of<CustomerProfile>(ctx, listen: false)
-                            .customer!;
-                    var username = cust.accountName;
-                    var displayName = '${cust.accountName} - ${cust.accountNo}';
+    return Scaffold(
+      appBar: const GradientAppBar(title: 'Chat With Us'),
+      body: QMultichannelConsumer(
+        builder: (_, QMultichannel ref) {
+          // void setUser() async {
+          //   await ref.setUser(
+          //     userId: 'guest-1001',
+          //     displayName: 'guest-1001',
+          //   );
+          // }
 
-                    ref.setUser(userId: username, displayName: displayName);
-                    print(
-                        '===== ${ref.account.hasValue}');
-                  },
-                  text: 'Login',
-                  useSide: false,
-                  useShadow: false,
-                ),
-                if (ref.account.hasValue) Text(ref.account.value!.name),
-              ],
-            );
-          },
-        ),
+          void startChat() async {
+            // setState(() {
+            _isLoading = true;
+            // });
+            await ref.initiateChat();
+            setState(() {
+              _isLoading = false;
+            });
+          }
+
+          // setUser();
+          print('===== ${ref.account.value}');
+          // startChat();
+          ref.initiateChat().then(
+                (value) => print('===== ${value.id}'),
+              );
+
+          return _isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : Container();
+        },
       ),
     );
   }

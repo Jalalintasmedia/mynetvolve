@@ -1201,7 +1201,7 @@ packages:
     source: hosted
     version: "6.0.5"
   qiscus_chat_sdk:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: qiscus_chat_sdk
       sha256: "4454eb0b4678cb2a15bd0b51f638a6aacb24fbe56552cc1774ab97925571ff37"

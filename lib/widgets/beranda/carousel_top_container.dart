@@ -20,7 +20,7 @@ class CarouselTopContainer extends StatelessWidget {
         future: _bannerFuture,
         builder: (ctx, dataSnapshot) {
           if (dataSnapshot.connectionState == ConnectionState.waiting) {
-            print('===== WAITING');
+            // print('===== WAITING');
             return ImagesCarousel(
               height: MediaQuery.of(context).size.height * 0.25,
             );

@@ -31,7 +31,7 @@ class BannerProvs with ChangeNotifier {
     _carouselBanners!.map((banner) {
       urls.add(banner.pathBanner);
     }).toList();
-    print('===== BANNERS: $urls');
+    // print('===== BANNERS: $urls');
     return urls;
   }
 
@@ -40,7 +40,7 @@ class BannerProvs with ChangeNotifier {
     _carouselBanners!.map((banner) {
       urls.add(banner.url);
     }).toList();
-    print('===== URLS: $urls');
+    // print('===== URLS: $urls');
     return urls;
   }
 

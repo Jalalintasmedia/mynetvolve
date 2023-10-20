@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mynetvolve/widgets/profile/profile_gradient_container.dart';
 import 'package:provider/provider.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:qiscus_multichannel_widget/qiscus_multichannel_widget.dart'
+    as qscs;
 
 import '../../core/constants.dart';
 import '../../providers/auth.dart';
@@ -123,9 +125,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Positioned.fill(
                 top: 200 - MediaQuery.of(context).padding.top + 15,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
                 child: SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -174,13 +176,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  GradientButton logoutButton(BuildContext context) {
-    return GradientButton(
-      buttonHandle: () => Provider.of<Auth>(context, listen: false).logout(),
-      text: 'Logout',
-      height: 50,
-      useBorder: false,
-    );
+  Widget logoutButton(BuildContext context) {
+    return qscs.QMultichannelConsumer(builder: (ctx, ref) {
+      return GradientButton(
+        buttonHandle: () {
+          // print('===== ${ref.account.hasValue}');
+          // if (ref.account.hasValue) {
+            try {
+              ref.clearUser();
+              print('===== SUCCESS CLEAR QISCUS USER');
+            } catch (e) {
+              print('===== CANT CLEAR QISCUS USER');
+            }
+          // }
+          Provider.of<Auth>(context, listen: false).logout();
+        },
+        text: 'Logout',
+        height: 50,
+        useBorder: false,
+      );
+    });
   }
 
   Widget nameWidget() {

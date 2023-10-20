@@ -6,6 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:qiscus_multichannel_widget/qiscus_multichannel_widget.dart' as qscs;
+// import 'package:qiscus_chat_sdk/qiscus_chat_sdk.dart' as qscs;
 
 import 'core/provs_list.dart';
 import 'helpers/notification_api.dart';
@@ -41,7 +43,7 @@ void main() async {
   FirebaseMessaging.onMessage.listen((message) {
     print('===== Got a message whilst in the foreground!');
     print('===== Message data: ${message.notification!.title}');
-    if(message.notification != null) {
+    if (message.notification != null) {
       NotificationApi.showNotification(
         id: message.notification.hashCode,
         title: message.notification!.title,
@@ -53,7 +55,7 @@ void main() async {
   HttpOverrides.global = MyHttpOverrides();
 
   final result = await Connectivity().checkConnectivity();
-  if(result == ConnectivityResult.none) {
+  if (result == ConnectivityResult.none) {
     return;
   }
 
@@ -70,6 +72,20 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
 
+    // void setUpQiscus() async {
+    //   final qiscus = qscs.QiscusSDK();
+    //   await qiscus.setup('xjdmu-wt7turq3zovo16e');
+    //   // await qiscus.setUser(
+    //   //   userId: 'userId654654',
+    //   //   userKey: 'userKey546546546',
+    //   //   username: 'name',
+    //   // );
+    //   // final user = await qiscus.getUserData();
+    //   // print(user.id);
+    // }
+
+    // setUpQiscus();
+
     return MultiProvider(
       providers: PROVIDERS_LIST,
       child: Consumer<Auth>(
@@ -77,24 +93,37 @@ class MyApp extends StatelessWidget {
           // print('REBUILD!');
           // print('IS AUTH: ${auth.isAuth}');
           // print('token: ${auth.token}');
-          return MaterialApp(
-            title: 'MyNetvolve',
-            theme: ThemeData(
-              primarySwatch: Palette.kToDark,
-              // fontFamily: 'Gotham',
+          return qscs.QMultichannelProvider(
+            appId: 'xjdmu-wt7turq3zovo16e',
+            channelId: '128014',
+            title: 'Netvolve Customer Service',
+            hideEventUI: false,
+            theme: const qscs.QAppTheme(
+              navigationColor: Palette.kToDark,
+              rightBubbleColor: Palette.kToDark,
+              sendContainerColor: Palette.kToDark,
             ),
-            debugShowCheckedModeBanner: false,
-            home: auth.isAuth
-                ? const TabsScreen()
-                : FutureBuilder(
-                    future: auth.tryAutoLogin(),
-                    builder: (ctx, authResultSnapshot) =>
-                        authResultSnapshot.connectionState ==
-                                ConnectionState.waiting
-                            ? const SplashScreen()
-                            : const PickAuthScreen(),
-                  ),
-            routes: routes.routesMap,
+            builder: (context) {
+              return MaterialApp(
+                title: 'MyNetvolve',
+                theme: ThemeData(
+                  primarySwatch: Palette.kToDark,
+                  // fontFamily: 'Gotham',
+                ),
+                debugShowCheckedModeBanner: false,
+                home: auth.isAuth
+                    ? const TabsScreen()
+                    : FutureBuilder(
+                        future: auth.tryAutoLogin(),
+                        builder: (ctx, authResultSnapshot) =>
+                            authResultSnapshot.connectionState ==
+                                    ConnectionState.waiting
+                                ? const SplashScreen()
+                                : const PickAuthScreen(),
+                      ),
+                routes: routes.routesMap,
+              );
+            }
           );
         },
       ),

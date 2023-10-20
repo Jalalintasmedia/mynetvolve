@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:mynetvolve/models/http_exception.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:qiscus_chat_sdk/qiscus_chat_sdk.dart' as qscs;
 
 import '../helpers/get_ip_address.dart';
 import '../models/customer.dart';
@@ -89,8 +90,21 @@ class CustomerProfile with ChangeNotifier {
         active = prefs.getBool('activate_fingerprint')!;
       }
       _customer = CustomerSummary.fromJson(customerData, active);
+      print(
+          '===== ${_customer!.accountNo}, $tAccountId, ${_customer!.accountName} - ${_customer!.accountNo}');
+
+      // // QISCUS DATA
+      // final qiscus = qscs.QiscusSDK();
+      // final cust = _customer!;
+      // await qiscus.setUser(
+      //   userId: cust.accountNo,
+      //   userKey: '$tAccountId',
+      //   username: '${cust.accountName} - ${cust.accountNo}',
+      // );
+      
       notifyListeners();
     } catch (e) {
+      print('===== $e');
       _customer = CustomerSummary(
         accountNo: '',
         accountName: '',
@@ -395,6 +409,4 @@ class CustomerProfile with ChangeNotifier {
       rethrow;
     }
   }
-
-  
 }
