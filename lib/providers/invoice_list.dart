@@ -115,7 +115,7 @@ class InvoiceList with ChangeNotifier {
       ),
     );
     final List<InvoiceDetail> loadedDetails = [];
-    print('INVOICE DETAIL: ${json.decode(response.body)['data']}');
+    // print('INVOICE DETAIL: ${json.decode(response.body)['data']}');
     final invoiceDetailList =
         json.decode(response.body)['data']['detail'] as List;
     invoiceDetailList.map((detail) {

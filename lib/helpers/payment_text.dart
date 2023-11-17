@@ -49,6 +49,48 @@ class PaymentTutorialText {
 	<li>Masukkan otentikasi transaksi/token</li>
 </ol>''';
 
+//   static const bniText = '''<strong>ATM</strong>
+
+// <ol>
+// 	<li>Masukkan kartu ATM anda</li>
+// 	<li>Pilih bahasa</li>
+// 	<li>Masukkan PIN ATM anda</li>
+// 	<li>Pilih &quot;Menu Lainnya&quot;</li>
+// 	<li>Pilih &quot;Transfer&quot;</li>
+// 	<li>Pilih jenis rekening yang akan anda gunakan&nbsp;(contoh: &quot;Dari Rekening Tabungan&quot;)</li>
+// 	<li>Pilih &quot;Virtual Account Billing&quot;</li>
+// 	<li>Masukkan Nomor Virtual Account anda</li>
+// 	<li>Tagihan yang harus dibayarkan akan muncul pada layar konfirmasi</li>
+// 	<li>Konfirmasi, apabila telah sesuai, lanjutkan transaksi</li>
+// </ol>
+
+// <strong>INTERNET BANKING</strong>
+
+// <ol>
+// 	<li>Buka situs <a href="https://ibank.bni.co.id">https://ibank.bni.co.id</a></li>
+// 	<li>Masukkan User ID dan Password</li>
+// 	<li>Pilih menu &quot;Transfer&quot;</li>
+// 	<li>Pilih menu &quot;Virtual Account Billing&quot;</li>
+// 	<li>Masukkan Nomor Virtual Account</li>
+// 	<li>Lalu pilih rekening debet yang akan digunakan. Kemudian tekan &quot;Lanjut&quot;</li>
+// 	<li>Tagihan yang harus dibayarkan akan muncul pada layar konfirmasi</li>
+// 	<li>Masukkan Kode Otentikasi Token</li>
+// </ol>
+
+// <strong>MOBILE BANKING</strong>
+
+// <ol>
+// 	<li>Akses BNI Mobile Banking melalui handphone</li>
+// 	<li>Masukkan User ID dan Password</li>
+// 	<li>Pilih menu &quot;Transfer&quot;</li>
+// 	<li>Pilih menu &quot;Virtual Account Billing&quot;, lalu pilih<br />
+// 	rekening debet</li>
+// 	<li>Masukkan Nomor Virtual Account anda pada menu &quot;Input Baru&quot;</li>
+// 	<li>Tagihan yang harus dibayarkan akan muncul pada layar konfirmasi</li>
+// 	<li>Konfirmasi transaksi dan masukkan Password Transaksi</li>
+// </ol>
+// ''';
+
   static const bniText = '''<strong>ATM</strong>
 
 <ol>
@@ -64,19 +106,6 @@ class PaymentTutorialText {
 	<li>Konfirmasi, apabila telah sesuai, lanjutkan transaksi</li>
 </ol>
 
-<strong>INTERNET BANKING</strong>
-
-<ol>
-	<li>Buka situs <a href="https://ibank.bni.co.id">https://ibank.bni.co.id</a></li>
-	<li>Masukkan User ID dan Password</li>
-	<li>Pilih menu &quot;Transfer&quot;</li>
-	<li>Pilih menu &quot;Virtual Account Billing&quot;</li>
-	<li>Masukkan Nomor Virtual Account</li>
-	<li>Lalu pilih rekening debet yang akan digunakan. Kemudian tekan &quot;Lanjut&quot;</li>
-	<li>Tagihan yang harus dibayarkan akan muncul pada layar konfirmasi</li>
-	<li>Masukkan Kode Otentikasi Token</li>
-</ol>
-
 <strong>MOBILE BANKING</strong>
 
 <ol>
@@ -88,6 +117,19 @@ class PaymentTutorialText {
 	<li>Masukkan Nomor Virtual Account anda pada menu &quot;Input Baru&quot;</li>
 	<li>Tagihan yang harus dibayarkan akan muncul pada layar konfirmasi</li>
 	<li>Konfirmasi transaksi dan masukkan Password Transaksi</li>
+</ol>
+
+<strong>INTERNET BANKING</strong>
+
+<ol>
+	<li>Buka situs <a href="https://ibank.bni.co.id">https://ibank.bni.co.id</a></li>
+	<li>Masukkan User ID dan Password</li>
+	<li>Pilih menu &quot;Transfer&quot;</li>
+	<li>Pilih menu &quot;Virtual Account Billing&quot;</li>
+	<li>Masukkan Nomor Virtual Account</li>
+	<li>Lalu pilih rekening debet yang akan digunakan. Kemudian tekan &quot;Lanjut&quot;</li>
+	<li>Tagihan yang harus dibayarkan akan muncul pada layar konfirmasi</li>
+	<li>Masukkan Kode Otentikasi Token</li>
 </ol>
 ''';
 
@@ -296,4 +338,45 @@ class PaymentTutorialText {
 	<li>Input Nominal yang ditagihkan sebagai Nominal Transfer</li>
 	<li>Selesai, transaksi berhasil</li>
 </ol>''';
+
+  static const mandiriText = '''<strong>ATM</strong>
+
+<ol>
+	<li>Masukkan kartu ATM Mandiri dan masukkan PIN</li>
+	<li>Di menu utama pilih &quot;BAYAR/BELI&quot;</li>
+	<li>Pilih menu &quot;E-COMMERCE&quot;</li>
+	<li>Masukkan 5 digit pertama kode pembayaran anda sebagai kode perusahaan</li>
+	<li>Masukkan kode pembayaran</li>
+	<li>Masukkan nominal pembayaran</li>
+	<li>Informasi pelanggan akan ditampilkan, pastikan nama dan nominal sesuai kemudian tekan &quot;YA&quot;</li>
+	<li>Konfirmasi pembayaran akan muncul, tekan &quot;YES&quot; untuk melanjutkan</li>
+	<li>Transaksi selesai, harap simpan bukti pembayaran Anda</li>
+</ol>
+
+<strong>MOBILE BANKING</strong>
+
+<ol>
+	<li>Masuk ke aplikasi Livin'.</li>
+	<li>Pilih menu Bayar</li>
+	<li>Masukkan 5 digit pertama kode pembayaran Anda di kotak pencarian</li>
+	<li>Masukkan kode pembayaran/nomor VA</li>
+	<li>Pastikan detail pembayaran sesuai</li>
+	<li>Pilih sumber dana</li>
+	<li>Pilih &quot;Continue&quot; kemudian masukkan pin anda dan konfirmasi</li>
+	<li>Transaksi berhasil, simpan bukti pembayaran</li>
+</ol>
+''';
+
+  static const danamonText = '''<strong>ATM</strong>
+
+<ol>
+	<li>Masukkan kartu ATM Danamon dan masukkan PIN ATM</li>
+	<li>Pilih menu &quot;Transfer&quot;</li>
+	<li>Pilih menu &quot;Rekening Bank Danamon&quot;</li>
+	<li>Masukkan nomor akun dengan kode pembayaran</li>
+	<li>Masukkan &quot;Jumlah&quot;</li>
+	<li>Saat konfirmasi transaksi muncul, pilih &quot;Ya&quot; / &quot;Lanjut&quot;</li>
+	<li>Transaksi selesai, harap simpan bukti pembayaran Anda</li>
+</ol>
+''';
 }

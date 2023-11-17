@@ -7,8 +7,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mynetvolve/widgets/profile/profile_gradient_container.dart';
 import 'package:provider/provider.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:qiscus_multichannel_widget/qiscus_multichannel_widget.dart'
-    as qscs;
 
 import '../../core/constants.dart';
 import '../../providers/auth.dart';
@@ -177,25 +175,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget logoutButton(BuildContext context) {
-    return qscs.QMultichannelConsumer(builder: (ctx, ref) {
-      return GradientButton(
-        buttonHandle: () {
-          // print('===== ${ref.account.hasValue}');
-          // if (ref.account.hasValue) {
-            try {
-              ref.clearUser();
-              print('===== SUCCESS CLEAR QISCUS USER');
-            } catch (e) {
-              print('===== CANT CLEAR QISCUS USER');
-            }
-          // }
-          Provider.of<Auth>(context, listen: false).logout();
-        },
-        text: 'Logout',
-        height: 50,
-        useBorder: false,
-      );
-    });
+    return GradientButton(
+      buttonHandle: () => Provider.of<Auth>(context, listen: false).logout(),
+      text: 'Logout',
+      height: 50,
+      useBorder: false,
+    );
   }
 
   Widget nameWidget() {

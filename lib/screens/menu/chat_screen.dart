@@ -2,10 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mynetvolve/core/constants.dart';
-import 'package:mynetvolve/providers/customer_profile.dart';
 import 'package:mynetvolve/widgets/gradient_app_bar.dart';
-import 'package:provider/provider.dart' as prov;
-import 'package:qiscus_multichannel_widget/qiscus_multichannel_widget.dart';
 
 // import '../../providers/auth.dart';
 import '../../widgets/buttons/rounded_button.dart';
@@ -33,82 +30,81 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return QMultichannelConsumer(builder: (_, QMultichannel ref) {
-      return Scaffold(
-        appBar: const GradientAppBar(title: 'Chat'),
-        body: const Padding(
-          padding: EdgeInsets.only(
-            right: 16,
-            left: 16,
-            top: 16,
-            bottom: 16 + 60 + 15,
-          ),
-          child: FaqPanel(),
+    return Scaffold(
+      appBar: const GradientAppBar(title: 'Chat'),
+      body: const Padding(
+        padding: EdgeInsets.only(
+          right: 16,
+          left: 16,
+          top: 16,
+          bottom: 16 + 60 + 15,
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: _isLoading
-            ? const CircularProgressIndicator()
-            : Container(
-                padding: const EdgeInsets.symmetric(horizontal: 100),
-                height: 60,
-                child: Tooltip(
-                  message: ToolTipString.MULAI_CHAT,
-                  verticalOffset: 35,
-                  preferBelow: false,
-                  child: RoundedButton(
-                    onPressed: () async {
-                      final cust = prov.Provider.of<CustomerProfile>(
-                        context,
-                        listen: false,
-                      ).customer!;
-                      ref.setUser(
-                        userId: cust.accountNo,
-                        displayName: '${cust.accountName} - ${cust.accountNo}',
-                      );
-                      try {
-                        ref.initiateChat().then(
-                          (room) {
-                            print('===== INITIATE CHAT SUCCESS: ${room.id}');
-                          },
-                          onError: (err) {
-                            print('===== INITIATE CHAT ERROR: $err');
-                          },
-                        );
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                QChatRoomScreen(onBack: (ctx) {
-                              print('on do back!');
-                              ref.clearUser();
-                              Navigator.of(context)
-                                  .maybePop()
-                                  .then((r) => debugPrint('maybePop: $r'));
-                            }),
-                          ),
-                        );
-                      } catch (e) {
-                        print('===== ERROR: $e');
-                      }
-                    },
-                    // onPressed: () {
-                    //   final qiscus = qscs.QiscusSDK();
-                    //   final cust = Provider.of<CustomerProfile>(
-                    //     context,
-                    //     listen: false,
-                    //   ).customer!;
+        child: FaqPanel(),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: _isLoading
+          ? const CircularProgressIndicator()
+          : Container(
+              padding: const EdgeInsets.symmetric(horizontal: 100),
+              height: 60,
+              child: Tooltip(
+                message: ToolTipString.MULAI_CHAT,
+                verticalOffset: 35,
+                preferBelow: false,
+                child: RoundedButton(
+                  // onPressed: () async {
+                  //   final cust = prov.Provider.of<CustomerProfile>(
+                  //     context,
+                  //     listen: false,
+                  //   ).customer!;
+                  //   ref.setUser(
+                  //     userId: cust.accountNo,
+                  //     displayName: '${cust.accountName} - ${cust.accountNo}',
+                  //   );
+                  //   try {
+                  //     ref.initiateChat().then(
+                  //       (room) {
+                  //         print('===== INITIATE CHAT SUCCESS: ${room.id}');
+                  //       },
+                  //       onError: (err) {
+                  //         print('===== INITIATE CHAT ERROR: $err');
+                  //       },
+                  //     );
+                  //     Navigator.of(context).push(
+                  //       MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             QChatRoomScreen(onBack: (ctx) {
+                  //           print('on do back!');
+                  //           ref.clearUser();
+                  //           Navigator.of(context)
+                  //               .maybePop()
+                  //               .then((r) => debugPrint('maybePop: $r'));
+                  //         }),
+                  //       ),
+                  //     );
+                  //   } catch (e) {
+                  //     print('===== ERROR: $e');
+                  //   }
+                  // },
+                  // onPressed: () {
+                  //   final qiscus = qscs.QiscusSDK();
+                  //   final cust = Provider.of<CustomerProfile>(
+                  //     context,
+                  //     listen: false,
+                  //   ).customer!;
 
-                    //   qiscus.chatUser(userId: cust.accountNo).then((chatroom) {
-                    //     print('===== SUCCESS $chatroom');
-                    //   });
-                    // },
-                    // onPressed: () => Navigator.of(context).pushNamed(RouteNames.LIVE_CHAT_ROUTE),
-                    text: 'Mulai Chat!',
-                    useSide: true,
-                    useShadow: false,
-                  ),
+                  //   qiscus.chatUser(userId: cust.accountNo).then((chatroom) {
+                  //     print('===== SUCCESS $chatroom');
+                  //   });
+                  // },
+                  onPressed: () => Navigator.of(context)
+                      .pushNamed(RouteNames.LIVE_CHAT_ROUTE),
+                  text: 'Mulai Chat!',
+                  useSide: true,
+                  useShadow: false,
                 ),
               ),
-      );
-    });
+            ),
+    );
   }
 }

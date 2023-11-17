@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:qiscus_multichannel_widget/qiscus_multichannel_widget.dart' as qscs;
 // import 'package:qiscus_chat_sdk/qiscus_chat_sdk.dart' as qscs;
 
 import 'core/provs_list.dart';
@@ -52,6 +51,13 @@ void main() async {
     }
   });
 
+  // @pragma('vm:entry-point')
+  // Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  //   print('===== BACKGROUND MESSAGE: $message');
+  // }
+
+  // FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+
   HttpOverrides.global = MyHttpOverrides();
 
   final result = await Connectivity().checkConnectivity();
@@ -93,37 +99,24 @@ class MyApp extends StatelessWidget {
           // print('REBUILD!');
           // print('IS AUTH: ${auth.isAuth}');
           // print('token: ${auth.token}');
-          return qscs.QMultichannelProvider(
-            appId: 'xjdmu-wt7turq3zovo16e',
-            channelId: '128014',
-            title: 'Netvolve Customer Service',
-            hideEventUI: false,
-            theme: const qscs.QAppTheme(
-              navigationColor: Palette.kToDark,
-              rightBubbleColor: Palette.kToDark,
-              sendContainerColor: Palette.kToDark,
+          return MaterialApp(
+            title: 'MyNetvolve',
+            theme: ThemeData(
+              primarySwatch: Palette.kToDark,
+              // fontFamily: 'Gotham',
             ),
-            builder: (context) {
-              return MaterialApp(
-                title: 'MyNetvolve',
-                theme: ThemeData(
-                  primarySwatch: Palette.kToDark,
-                  // fontFamily: 'Gotham',
-                ),
-                debugShowCheckedModeBanner: false,
-                home: auth.isAuth
-                    ? const TabsScreen()
-                    : FutureBuilder(
-                        future: auth.tryAutoLogin(),
-                        builder: (ctx, authResultSnapshot) =>
-                            authResultSnapshot.connectionState ==
-                                    ConnectionState.waiting
-                                ? const SplashScreen()
-                                : const PickAuthScreen(),
-                      ),
-                routes: routes.routesMap,
-              );
-            }
+            debugShowCheckedModeBanner: false,
+            home: auth.isAuth
+                ? const TabsScreen()
+                : FutureBuilder(
+                    future: auth.tryAutoLogin(),
+                    builder: (ctx, authResultSnapshot) =>
+                        authResultSnapshot.connectionState ==
+                                ConnectionState.waiting
+                            ? const SplashScreen()
+                            : const PickAuthScreen(),
+                  ),
+            routes: routes.routesMap,
           );
         },
       ),

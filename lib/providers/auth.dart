@@ -108,7 +108,8 @@ class Auth with ChangeNotifier {
         throw HttpException(responseData['msg']);
       }
       if (responseData['data']['t_isp_id'] != '1') {
-        throw HttpException('Tidak dapat login menggunakan selain akun Netvolve');
+        throw HttpException(
+            'Tidak dapat login menggunakan selain akun Netvolve');
       }
 
       // new token based on extracted data
@@ -139,6 +140,15 @@ class Auth with ChangeNotifier {
       });
       prefs.setString('userData', userData);
       prefs.setBool('isDisplayed', false);
+
+      // chat info
+      if (prefs.containsKey('chat_info')) {
+        final chatInfo =
+            json.decode(prefs.getString('chat_info')!) as Map<String, dynamic>;
+        if (chatInfo['t_account_id'] != _tAccountId) {
+          prefs.remove('chat_info');
+        }
+      }
 
       // remove networkInfo
       // prefs.remove(BerandaScreen.NETWORK_INFO);
@@ -204,6 +214,7 @@ class Auth with ChangeNotifier {
       notifyListeners();
       final prefs = await SharedPreferences.getInstance();
       prefs.remove('userData');
+      // prefs.remove('chat_info');
 
       // ZohoSalesIQ.unregisterVisitor();
 

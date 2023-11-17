@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mynetvolve/widgets/payment/credit_card_sub.dart';
 import 'package:provider/provider.dart';
 
 import '../../widgets/payment/virtual_account_sub.dart';
 import '../../widgets/gradient_app_bar.dart';
-import '../../widgets/payment/pembayaran_counter_sub.dart';
 import '../../models/nomor_pembayaran.dart';
 import '../../providers/customer_profile.dart';
 import '../../providers/invoice_list.dart';
@@ -77,15 +77,16 @@ class BayarTagihanScreen extends StatelessWidget {
                                 invoiceById: invoiceById,
                                 invoiceDetail: invoiceDetail,
                               ),
-                              PembayaranCounterSub(
-                                invoiceById: invoiceById,
-                                accountNo: accountNo,
-                              ),
+                              // PembayaranCounterSub(
+                              //   invoiceById: invoiceById,
+                              //   accountNo: accountNo,
+                              // ),
                               VirtualAccountSub(
                                 invoiceById: invoiceById,
                                 list: _vaList,
                                 accountNo: accountNo,
                               ),
+                              CreditCardSub(invoiceById: invoiceById),
                             ],
                           ),
                         )

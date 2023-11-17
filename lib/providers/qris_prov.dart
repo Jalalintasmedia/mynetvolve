@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:mynetvolve/models/payment.dart';
 
 import '../core/constants.dart';
-import '../models/qris.dart';
 
 class QrisProv with ChangeNotifier {
   // List<GeneratedQr>? _qrList;
@@ -12,19 +12,13 @@ class QrisProv with ChangeNotifier {
   Qris2? _qris2;
   AlfamartPayment? _alfamartPayment;
   VAPayment? _vaPayment;
+  CreditCardPayment? _ccPayment;
   final String? token;
   final String? timeStamp;
   final String? tAccountId;
 
-  QrisProv(
-    this.token,
-    this.timeStamp,
-    this.tAccountId,
-    this._qris,
-    this._qris2,
-    this._alfamartPayment,
-    this._vaPayment,
-  );
+  QrisProv(this.token, this.timeStamp, this.tAccountId, this._qris, this._qris2,
+      this._alfamartPayment, this._vaPayment, this._ccPayment);
 
   Qris? get qris => _qris;
 
@@ -34,13 +28,15 @@ class QrisProv with ChangeNotifier {
 
   VAPayment? get vaPayment => _vaPayment;
 
+  CreditCardPayment? get creditCardPayment => _ccPayment;
+
   Future<void> generateQris({
     required String accountNo,
     required String invoiceNo,
     required int amount,
     required String tIspId,
   }) async {
-    final url = Uri.parse('$PG_API_URL/qris-netvolve.php');
+    final url = Uri.parse('$PG_XENDIT_API_URL/qris-netvolve.php');
     print(
       '===== t_account_id: $tAccountId, account_no: $accountNo, invoice_no: $invoiceNo, amount: $amount, tIspId: $tIspId',
     );
@@ -132,12 +128,13 @@ class QrisProv with ChangeNotifier {
   Future<void> generateVACode({
     required String accountNo,
     required String name,
+    required String email,
     required String invoiceNo,
     required int amount,
     required String tIspId,
     required String bankType,
   }) async {
-    final url = Uri.parse('$PG_API_URL/va-netvolve.php');
+    final url = Uri.parse('$PG_API_URL/va.php');
     try {
       final response = await http.post(
         url,
@@ -147,12 +144,13 @@ class QrisProv with ChangeNotifier {
             'act': 'generate',
             't_account_id': tAccountId,
             'account_no': accountNo,
-            'fullname': name,
             'mod': 'by_invoice',
             'invoiceNo': invoiceNo,
-            'amount': amount,
+            'fullname': name,
             't_isp_id': tIspId,
+            'amount': amount,
             'bankType': bankType,
+            'customerEmail': email,
           },
         ),
       );
@@ -169,6 +167,61 @@ class QrisProv with ChangeNotifier {
       _vaPayment = VAPayment.fromJson(extractedData);
     } catch (e) {
       print('===== VA $bankType ERROR: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> generateCreditCardPayment({
+    required String accountNo,
+    required String invoiceNo,
+    required String name,
+    required String tIspId,
+    required int amount,
+    required String email,
+  }) async {
+    final url = Uri.parse('$PG_API_URL/cc.php');
+    try {
+      print({
+        'act': 'generate',
+        't_account_id': tAccountId,
+        'account_no': accountNo,
+        'mod': 'by_invoice',
+        'invoiceNo': invoiceNo,
+        'fullname': name,
+        't_isp_id': tIspId,
+        'amount': amount,
+        'customerEmail': email,
+      });
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode(
+          {
+            'act': 'generate',
+            't_account_id': tAccountId,
+            'account_no': accountNo,
+            'mod': 'by_invoice',
+            'invoiceNo': invoiceNo,
+            'fullname': name,
+            't_isp_id': tIspId,
+            'amount': amount,
+            'customerEmail': email,
+          },
+        ),
+      );
+      print('===== CC PAYMENT: ${response.body}');
+      final responseData = json.decode(response.body);
+      if (responseData['code'] != '0000') {
+        if (responseData['code'] == '0005') {
+          throw ('Silakan coba beberapa saat lagi');
+        }
+        throw (responseData['msg']);
+      }
+
+      Map<String?, dynamic> extractedData = responseData['data'];
+      _ccPayment = CreditCardPayment.fromJson(extractedData);
+    } catch (e) {
+      print('===== CC PAYMENT ERROR: $e');
       rethrow;
     }
   }

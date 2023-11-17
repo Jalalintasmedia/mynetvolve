@@ -5,8 +5,8 @@ import 'package:mynetvolve/models/nomor_pembayaran.dart';
 import 'package:mynetvolve/screens/payment/show_va_code_screen.dart';
 import 'package:mynetvolve/widgets/payment/expansion_pembayaran_sub.dart';
 import 'package:mynetvolve/widgets/payment/generate_pembayaran_tile.dart';
-import 'package:mynetvolve/widgets/payment/metode_pembayaran_tile.dart';
-import 'package:mynetvolve/widgets/payment/pembayaran_collapsible_tile.dart';
+// import 'package:mynetvolve/widgets/payment/metode_pembayaran_tile.dart';
+// import 'package:mynetvolve/widgets/payment/pembayaran_collapsible_tile.dart';
 
 import '../../models/invoice.dart';
 
@@ -27,6 +27,42 @@ class VirtualAccountSub extends StatelessWidget {
     return ExpansionPembayaranSub(
       title: 'Virtual Account',
       children: [
+        GeneratePembayaranTile(
+          title: 'Mandiri',
+          image: 'mandiri-logo.png',
+          tutorialText:
+              '<ol><li>Transfer sesama bank</li><li>Transfer antar bank menggunakan online transfer (RTOL)</li><li>BI-RTGS</li><li>SKN-BI</li><li>BI-Fast</li></ol>',
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => ShowVACodeScreen(
+                invoiceNo: invoiceById.invoiceNo,
+                amount: invoiceById.currentBalance.toInt(),
+                tutorialText: PaymentTutorialText.mandiriText,
+                bankType: BankType.mandiri,
+              ),
+            ),
+          ),
+          buttonText: 'Generate Kode VA',
+        ),
+        const SizedBox(height: 5),
+        GeneratePembayaranTile(
+          title: 'Danamon',
+          image: 'danamon-logo.png',
+          tutorialText:
+              '<ol><li>Transfer sesama bank</li><li>Transfer antar bank menggunakan online transfer (RTOL)</li><li>BI-RTGS</li><li>SKN-BI</li><li>BI-Fast</li></ol>',
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => ShowVACodeScreen(
+                invoiceNo: invoiceById.invoiceNo,
+                amount: invoiceById.currentBalance.toInt(),
+                tutorialText: PaymentTutorialText.danamonText,
+                bankType: BankType.danamon,
+              ),
+            ),
+          ),
+          buttonText: 'Generate Kode VA',
+        ),
+        const SizedBox(height: 5),
         GeneratePembayaranTile(
           title: 'BRI',
           image: 'bri-logo.png',
@@ -99,93 +135,93 @@ class VirtualAccountSub extends StatelessWidget {
           buttonText: 'Generate Kode VA',
         ),
         const SizedBox(height: 5),
-        GeneratePembayaranTile(
-          title: 'BJB',
-          image: 'bjb-logo.png',
-          tutorialText:
-              '<ol><li>Transfer sesama bank</li><li>Transfer antar bank menggunakan online transfer (RTOL)</li><li>BI-RTGS</li><li>SKN-BI</li></ol>',
-          onPressed: () => Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => ShowVACodeScreen(
-                invoiceNo: invoiceById.invoiceNo,
-                amount: invoiceById.currentBalance.toInt(),
-                tutorialText: PaymentTutorialText.bjbText,
-                bankType: BankType.bjb,
-              ),
-            ),
-          ),
-          buttonText: 'Generate Kode VA',
-        ),
-        const SizedBox(height: 5),
-        GeneratePembayaranTile(
-          title: 'BSI',
-          image: 'bsi-logo.png',
-          tutorialText:
-              '<ol><li>Transfer sesama bank</li><li>Transfer antar bank menggunakan online transfer (RTOL)</li><li>BI-RTGS</li><li>SKN-BI</li></ol>',
-          onPressed: () => Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => ShowVACodeScreen(
-                invoiceNo: invoiceById.invoiceNo,
-                amount: invoiceById.currentBalance.toInt(),
-                tutorialText: PaymentTutorialText.bsiText,
-                bankType: BankType.bsi,
-              ),
-            ),
-          ),
-          buttonText: 'Generate Kode VA',
-        ),
-        const SizedBox(height: 5),
-        GeneratePembayaranTile(
-          title: 'Bank Lain',
-          image: 'bsi-logo.png',
-          noImage: true,
-          tutorialText:
-              'Transfer antar bank menggunakan online transfer (RTOL)',
-          onPressed: () => Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => ShowVACodeScreen(
-                invoiceNo: invoiceById.invoiceNo,
-                amount: invoiceById.currentBalance.toInt(),
-                tutorialText: PaymentTutorialText.otherBankText,
-                bankType: BankType.otherBank,
-              ),
-            ),
-          ),
-          buttonText: 'Generate Kode VA',
-        ),
-        const SizedBox(height: 5),
-        MetodePembayaranTile(
-          title: list[0].nama,
-          image: list[0].image,
-          contentWidget: PembayaranCollapsibleTile(
-            ctx: context,
-            jenisPembayaran: 'Nomor VA',
-            noVa: '${list[0].nomor}$accountNo',
-            total: invoiceById.currentBalance,
-          ),
-        ),
-        const SizedBox(height: 5),
-        MetodePembayaranTile(
-          title: list[1].nama,
-          image: list[1].image,
-          contentWidget: PembayaranCollapsibleTile(
-            ctx: context,
-            jenisPembayaran: 'Nomor VA',
-            noVa: '${list[1].nomor}$accountNo',
-            total: invoiceById.currentBalance,
-          ),
-        ),
-        const SizedBox(height: 5),
-        MetodePembayaranTile(
-          title: list[2].nama,
-          image: list[2].image,
-          contentWidget: PembayaranCollapsibleTile(
-            ctx: context,
-            jenisPembayaran: 'Nomor VA',
-            noVa: '${list[2].nomor}$accountNo',
-            total: invoiceById.currentBalance,
-          ),
-        ),
+        // GeneratePembayaranTile(
+        //   title: 'BJB',
+        //   image: 'bjb-logo.png',
+        //   tutorialText:
+        //       '<ol><li>Transfer sesama bank</li><li>Transfer antar bank menggunakan online transfer (RTOL)</li><li>BI-RTGS</li><li>SKN-BI</li></ol>',
+        //   onPressed: () => Navigator.of(context).push(
+        //     MaterialPageRoute(
+        //       builder: (_) => ShowVACodeScreen(
+        //         invoiceNo: invoiceById.invoiceNo,
+        //         amount: invoiceById.currentBalance.toInt(),
+        //         tutorialText: PaymentTutorialText.bjbText,
+        //         bankType: BankType.bjb,
+        //       ),
+        //     ),
+        //   ),
+        //   buttonText: 'Generate Kode VA',
+        // ),
+        // const SizedBox(height: 5),
+        // GeneratePembayaranTile(
+        //   title: 'BSI',
+        //   image: 'bsi-logo.png',
+        //   tutorialText:
+        //       '<ol><li>Transfer sesama bank</li><li>Transfer antar bank menggunakan online transfer (RTOL)</li><li>BI-RTGS</li><li>SKN-BI</li></ol>',
+        //   onPressed: () => Navigator.of(context).push(
+        //     MaterialPageRoute(
+        //       builder: (_) => ShowVACodeScreen(
+        //         invoiceNo: invoiceById.invoiceNo,
+        //         amount: invoiceById.currentBalance.toInt(),
+        //         tutorialText: PaymentTutorialText.bsiText,
+        //         bankType: BankType.bsi,
+        //       ),
+        //     ),
+        //   ),
+        //   buttonText: 'Generate Kode VA',
+        // ),
+        // const SizedBox(height: 5),
+        // GeneratePembayaranTile(
+        //   title: 'Bank Lain',
+        //   image: 'bsi-logo.png',
+        //   noImage: true,
+        //   tutorialText:
+        //       'Transfer antar bank menggunakan online transfer (RTOL)',
+        //   onPressed: () => Navigator.of(context).push(
+        //     MaterialPageRoute(
+        //       builder: (_) => ShowVACodeScreen(
+        //         invoiceNo: invoiceById.invoiceNo,
+        //         amount: invoiceById.currentBalance.toInt(),
+        //         tutorialText: PaymentTutorialText.otherBankText,
+        //         bankType: BankType.otherBank,
+        //       ),
+        //     ),
+        //   ),
+        //   buttonText: 'Generate Kode VA',
+        // ),
+        // const SizedBox(height: 5),
+        // MetodePembayaranTile(
+        //   title: list[0].nama,
+        //   image: list[0].image,
+        //   contentWidget: PembayaranCollapsibleTile(
+        //     ctx: context,
+        //     jenisPembayaran: 'Nomor VA',
+        //     noVa: '${list[0].nomor}$accountNo',
+        //     total: invoiceById.currentBalance,
+        //   ),
+        // ),
+        // const SizedBox(height: 5),
+        // MetodePembayaranTile(
+        //   title: list[1].nama,
+        //   image: list[1].image,
+        //   contentWidget: PembayaranCollapsibleTile(
+        //     ctx: context,
+        //     jenisPembayaran: 'Nomor VA',
+        //     noVa: '${list[1].nomor}$accountNo',
+        //     total: invoiceById.currentBalance,
+        //   ),
+        // ),
+        // const SizedBox(height: 5),
+        // MetodePembayaranTile(
+        //   title: list[2].nama,
+        //   image: list[2].image,
+        //   contentWidget: PembayaranCollapsibleTile(
+        //     ctx: context,
+        //     jenisPembayaran: 'Nomor VA',
+        //     noVa: '${list[2].nomor}$accountNo',
+        //     total: invoiceById.currentBalance,
+        //   ),
+        // ),
       ],
     );
   }

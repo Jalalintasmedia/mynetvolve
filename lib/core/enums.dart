@@ -27,5 +27,8 @@ enum BankType {
   cimbNiaga,
   bjb,
   bsi,
+  mandiri,
+  danamon,
+  doku,
   otherBank,
 }

@@ -2,7 +2,6 @@
 
 import 'dart:convert';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -16,8 +15,6 @@ import '../../widgets/auth/gradient_background.dart';
 import '../../widgets/buttons/gradient_button.dart';
 import '../../widgets/auth/register_form_field.dart';
 import '../../core/constants.dart';
-import 'package:qiscus_multichannel_widget/qiscus_multichannel_widget.dart'
-    as qscs;
 
 class NewLoginScreen extends StatefulWidget {
   const NewLoginScreen({Key? key}) : super(key: key);
@@ -186,29 +183,16 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
                                 color: Colors.white,
                               ),
                             )
-                          : qscs.QMultichannelConsumer(builder: (ctx, ref) {
-                              return GradientButton(
-                                buttonHandle: () async {
-                                  try {
-                                    var firebaseToken = await FirebaseMessaging
-                                        .instance
-                                        .getToken();
-                                    ref.setDeviceId(firebaseToken!);
-                                    print('===== QISCUS DEVICE ID SUCCESS');
-                                  } catch (e) {
-                                    print('===== QISCUS DEVICE ID ERROR: $e');
-                                  }
-                                  _masuk();
-                                },
-                                text: 'Masuk',
-                                gradientColors: const [
-                                  Color.fromRGBO(0, 171, 247, 1),
-                                  Color.fromRGBO(0, 90, 253, 1),
-                                ],
-                                begin: Alignment.bottomLeft,
-                                end: Alignment.topRight,
-                              );
-                            }),
+                          : GradientButton(
+                              buttonHandle: _masuk,
+                              text: 'Masuk',
+                              gradientColors: const [
+                                Color.fromRGBO(0, 171, 247, 1),
+                                Color.fromRGBO(0, 90, 253, 1),
+                              ],
+                              begin: Alignment.bottomLeft,
+                              end: Alignment.topRight,
+                            ),
                     ],
                   ),
                 ),
@@ -329,27 +313,13 @@ class _NewLoginScreenState extends State<NewLoginScreen> {
           } else {
             if (_isFingerPrintEnabled) {
               final icon = _isBiometricFaceId ? 'face-id' : 'fingerprint-scan';
-              return qscs.QMultichannelConsumer(builder: (ctx, ref) {
-                return FloatingActionButton(
-                  heroTag: 'fingerprintButton',
-                  onPressed: _isLoading
-                      ? null
-                      : () async {
-                          _fingerprintLogin();
-                          try {
-                            var firebaseToken =
-                                await FirebaseMessaging.instance.getToken();
-                            ref.setDeviceId(firebaseToken!);
-                            print('===== QISCUS DEVICE ID SUCCESS');
-                          } catch (e) {
-                            print('===== QISCUS DEVICE ID ERROR: $e');
-                          }
-                        },
-                  child: ImageIcon(
-                    AssetImage('assets/icons/$icon.png'),
-                  ),
-                );
-              });
+              return FloatingActionButton(
+                heroTag: 'fingerprintButton',
+                onPressed: _isLoading ? null : _fingerprintLogin,
+                child: ImageIcon(
+                  AssetImage('assets/icons/$icon.png'),
+                ),
+              );
             } else {
               return const SizedBox();
             }

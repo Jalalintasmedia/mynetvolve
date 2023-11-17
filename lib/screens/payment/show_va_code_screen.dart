@@ -42,7 +42,7 @@ class _ShowVACodeScreenState extends State<ShowVACodeScreen> {
         break;
       case BankType.permata:
         logo = 'permata-bank-logo.png';
-        bankName = 'PERMATA';
+        bankName = 'Permata';
         break;
       case BankType.bankSahabatSampoerna:
         logo = 'bank-sampoerna-logo.png';
@@ -60,6 +60,18 @@ class _ShowVACodeScreenState extends State<ShowVACodeScreen> {
         logo = 'bsi-logo.png';
         bankName = 'BSI';
         break;
+      case BankType.mandiri:
+        logo = 'mandiri-logo.png';
+        bankName = 'Mandiri';
+        break;
+      case BankType.danamon:
+        logo = 'danamon-logo.png';
+        bankName = 'Danamon';
+        break;
+      case BankType.doku:
+        logo = 'doku-logo.png';
+        bankName = 'DOKU';
+        break;
       case BankType.otherBank:
         logo = null;
         bankName = 'BNI';
@@ -73,6 +85,7 @@ class _ShowVACodeScreenState extends State<ShowVACodeScreen> {
     ).customer!;
     final accountNo = customerData.accountNo;
     final accountName = customerData.accountName;
+    final accountEmail = customerData.accountEmail;
     final tIspId = customerData.tIspId;
     late final _vaFuture = Provider.of<QrisProv>(
       context,
@@ -80,6 +93,7 @@ class _ShowVACodeScreenState extends State<ShowVACodeScreen> {
     ).generateVACode(
       accountNo: accountNo,
       name: accountName,
+      email: accountEmail,
       invoiceNo: widget.invoiceNo,
       amount: widget.amount,
       tIspId: tIspId,
@@ -109,7 +123,7 @@ class _ShowVACodeScreenState extends State<ShowVACodeScreen> {
           if (dataSnapshot.hasError) {
             return Center(
               child: Text(
-                'Tidak Dapat men-generate kode VA\n${dataSnapshot.error}',
+                'Tidak Dapat men-generate kode VA.0\n${dataSnapshot.error}',
                 textAlign: TextAlign.center,
               ),
             );
