@@ -13,12 +13,22 @@ class QrisProv with ChangeNotifier {
   AlfamartPayment? _alfamartPayment;
   VAPayment? _vaPayment;
   CreditCardPayment? _ccPayment;
+  AkuLakuPayment? _akuLakuPayment;
   final String? token;
   final String? timeStamp;
   final String? tAccountId;
 
-  QrisProv(this.token, this.timeStamp, this.tAccountId, this._qris, this._qris2,
-      this._alfamartPayment, this._vaPayment, this._ccPayment);
+  QrisProv(
+    this.token,
+    this.timeStamp,
+    this.tAccountId,
+    this._qris,
+    this._qris2,
+    this._alfamartPayment,
+    this._vaPayment,
+    this._ccPayment,
+    this._akuLakuPayment,
+  );
 
   Qris? get qris => _qris;
 
@@ -29,6 +39,8 @@ class QrisProv with ChangeNotifier {
   VAPayment? get vaPayment => _vaPayment;
 
   CreditCardPayment? get creditCardPayment => _ccPayment;
+
+  AkuLakuPayment? get akuLakuPayment => _akuLakuPayment;
 
   Future<void> generateQris({
     required String accountNo,
@@ -222,6 +234,64 @@ class QrisProv with ChangeNotifier {
       _ccPayment = CreditCardPayment.fromJson(extractedData);
     } catch (e) {
       print('===== CC PAYMENT ERROR: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> generateAkuLakuPayment({
+    required String accountNo,
+    required String invoiceNo,
+    required String name,
+    required String tIspId,
+    required int amount,
+    required String email,
+    required String phoneNumber,
+  }) async {
+    final url = Uri.parse('$PG_API_URL/akulaku.php');
+    try {
+      print({
+        'act': 'generate',
+        't_account_id': tAccountId,
+        'account_no': accountNo,
+        'mod': 'by_invoice',
+        'invoiceNo': invoiceNo,
+        'fullname': name,
+        't_isp_id': tIspId,
+        'amount': amount,
+        'customerEmail': email,
+        'phoneNumber': phoneNumber,
+      });
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode(
+          {
+            'act': 'generate',
+            't_account_id': tAccountId,
+            'account_no': accountNo,
+            'mod': 'by_invoice',
+            'invoiceNo': invoiceNo,
+            'fullname': name,
+            't_isp_id': tIspId,
+            'amount': amount,
+            'customerEmail': email,
+        'phoneNumber': phoneNumber,
+          },
+        ),
+      );
+      print('===== AKULAKU PAYMENT: ${response.body}');
+      final responseData = json.decode(response.body);
+      if (responseData['code'] != '0000') {
+        if (responseData['code'] == '0005') {
+          throw ('Silakan coba beberapa saat lagi');
+        }
+        throw (responseData['msg']);
+      }
+
+      Map<String?, dynamic> extractedData = responseData['data'];
+      _akuLakuPayment = AkuLakuPayment.fromJson(extractedData);
+    } catch (e) {
+      print('===== AKULAKU PAYMENT ERROR: $e');
       rethrow;
     }
   }

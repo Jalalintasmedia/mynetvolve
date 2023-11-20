@@ -52,7 +52,7 @@ final PROVIDERS_LIST = [
     ),
   ),
   ChangeNotifierProxyProvider<Auth, QrisProv>(
-    create: (context) => QrisProv(null, null, null, null, null, null, null, null),
+    create: (context) => QrisProv(null, null, null, null, null, null, null, null, null),
     update: (ctx, auth, previousQris) => QrisProv(
       auth.token,
       auth.time,
@@ -62,6 +62,7 @@ final PROVIDERS_LIST = [
       previousQris.alfamartPayment,
       previousQris.vaPayment,
       previousQris.creditCardPayment,
+      previousQris.akuLakuPayment,
     ),
   ),
   ChangeNotifierProxyProvider<Auth, TicketProvider>(

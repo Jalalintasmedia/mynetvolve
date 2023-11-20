@@ -289,3 +289,36 @@ class CreditCardPayment {
             : null,
         createdAt = DateTime.parse(json['created_at']);
 }
+
+class AkuLakuPayment {
+  String idPel;
+  String externalId;
+  String ccPage;
+  int amount;
+  int adminFee;
+  int billAmount;
+  String status;
+  int expiredTime;
+  String? expiredType;
+  bool isSingleUse;
+  DateTime? expirationDate;
+  DateTime? expiredAt;
+  DateTime? createdAt;
+
+  AkuLakuPayment.fromJson(Map<String?, dynamic> json)
+      : idPel = json['id_pel'] ?? '',
+        externalId = json['external_id'] ?? '',
+        ccPage = json['cc_page'] ?? '',
+        amount = json['amount'] ?? 0,
+        adminFee = json['admin_fee'] ?? 0,
+        billAmount = json['bill_amount'] ?? 0,
+        status = json['status'] ?? '',
+        expiredTime = json['expiredTime'] ?? 0,
+        expiredType = json['expired_type'],
+        isSingleUse = json['is_single_use'] ?? true,
+        expirationDate = DateTime.parse(json['expiration_date']),
+        expiredAt = json['expired_at'] != null
+            ? DateTime.parse(json['expired_at'])
+            : null,
+        createdAt = DateTime.parse(json['created_at']);
+}

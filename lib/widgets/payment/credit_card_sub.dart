@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mynetvolve/models/invoice.dart';
+import 'package:mynetvolve/screens/payment/akulaku_screen.dart';
 import 'package:mynetvolve/screens/payment/credit_card_screen.dart';
 import 'package:mynetvolve/widgets/payment/expansion_pembayaran_sub.dart';
 import 'package:mynetvolve/widgets/payment/generate_pembayaran_tile.dart';
@@ -31,6 +32,20 @@ class CreditCardSub extends StatelessWidget {
             ),
           ),
           buttonText: 'Bayar menggunakan kartu kredit',
+        ),
+        GeneratePembayaranTile(
+          title: 'Akulaku',
+          image: 'akulaku-logo.jpeg',
+          tutorialText: '',
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => AkuLakuScreen(
+                invoiceNo: invoiceById.invoiceNo,
+                amount: invoiceById.currentBalance.toInt(),
+              ),
+            ),
+          ),
+          buttonText: 'Bayar menggunakan akulaku',
         ),
       ],
     );
