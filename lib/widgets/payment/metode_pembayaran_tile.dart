@@ -34,8 +34,9 @@ class MetodePembayaranTile extends StatelessWidget {
         child: ExpansionTile(
           expandedCrossAxisAlignment: CrossAxisAlignment.end,
           leading: noImage ? null : LayoutBuilder(
-            builder: (ctx, constraints) => SizedBox(
+            builder: (ctx, constraints) => Container(
               width: constraints.maxWidth * 0.25,
+              padding: const EdgeInsets.all(3),
               child: Image.asset('assets/images/$image'),
             ),
           ),

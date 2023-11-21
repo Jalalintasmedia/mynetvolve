@@ -106,7 +106,10 @@ class _BerandaScreenState extends State<BerandaScreen> {
                                 children: [
                                   InternetPackageContainer(),
                                   SizedBox(height: 15),
-                                  MyPackagesWidget(),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: MyPackagesWidget(),
+                                  ),
                                 ],
                               ),
                             );

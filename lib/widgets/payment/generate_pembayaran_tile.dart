@@ -10,7 +10,7 @@ class GeneratePembayaranTile extends StatelessWidget {
     Key? key,
     required this.title,
     required this.image,
-    required this.tutorialText,
+    this.tutorialText,
     required this.onPressed,
     required this.buttonText,
     this.noImage = false,
@@ -18,7 +18,7 @@ class GeneratePembayaranTile extends StatelessWidget {
 
   final String title;
   final String image;
-  final String tutorialText;
+  final String? tutorialText;
   final VoidCallback onPressed;
   final String buttonText;
   final bool noImage;
@@ -33,17 +33,18 @@ class GeneratePembayaranTile extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 15),
         child: Column(
           children: [
-            Html(
-              data: tutorialText,
-              shrinkWrap: true,
-              style: {
-                'body': Style(
-                  padding: EdgeInsets.zero,
-                  margin: EdgeInsets.zero,
-                  lineHeight: const LineHeight(1.5),
-                ),
-              },
-            ),
+            if (tutorialText != null)
+              Html(
+                data: tutorialText,
+                shrinkWrap: true,
+                style: {
+                  'body': Style(
+                    padding: EdgeInsets.zero,
+                    margin: EdgeInsets.zero,
+                    lineHeight: const LineHeight(1.5),
+                  ),
+                },
+              ),
             const SizedBox(height: 15),
             RoundedButton(
               onPressed: onPressed,

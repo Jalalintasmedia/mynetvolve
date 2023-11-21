@@ -100,7 +100,7 @@ class QrisProv with ChangeNotifier {
     print(
       '===== generate alfamart prov CALLED. t_isp_id: $tIspId, tAccountId: $tAccountId, account no: $accountNo, name: $name, invoice no: $invoiceNo, amount: $amount',
     );
-    final url = Uri.parse('$PG_API_URL/otc-netvolve.php');
+    final url = Uri.parse('$PG_XENDIT_API_URL/otc-netvolve.php');
     try {
       final response = await http.post(
         url,

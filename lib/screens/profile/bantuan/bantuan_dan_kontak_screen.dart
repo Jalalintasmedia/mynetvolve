@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mynetvolve/helpers/copy_text.dart';
+import 'package:mynetvolve/helpers/link_director.dart';
 import 'package:mynetvolve/widgets/gradient_app_bar.dart';
 
 class BantuanDanKontakScreen extends StatelessWidget {
@@ -17,14 +18,16 @@ class BantuanDanKontakScreen extends StatelessWidget {
               children: [
                 kontakListTile(
                   'Email',
-                  'cs@bnetfit.id',
+                  'admin.netvolve@jlm.net.id',
                   Icons.email_outlined,
+                  () => emailWithMailApp('admin.netvolve@jlm.net.id'),
                 ),
                 const Divider(color: Colors.grey),
                 kontakListTile(
                   'Call Center',
-                  '021 5091 9981',
+                  '021-5091-9980',
                   Icons.phone_outlined,
+                  () => callNumber('02150919980'),
                 ),
               ],
             ),
@@ -34,9 +37,9 @@ class BantuanDanKontakScreen extends StatelessWidget {
     );
   }
 
-  ListTile kontakListTile(String title, String subtitle, IconData icon) {
+  ListTile kontakListTile(String title, String subtitle, IconData icon, VoidCallback onTap) {
     return ListTile(
-      onTap: () => copyText(copiedData: subtitle, copyType: title),
+      onTap: onTap,
       title: Text(
         title,
         style: const TextStyle(
@@ -45,6 +48,10 @@ class BantuanDanKontakScreen extends StatelessWidget {
       ),
       subtitle: Text(subtitle),
       leading: Icon(icon),
+      trailing: IconButton(
+        icon: const Icon(Icons.copy, size: 18),
+        onPressed: () => copyText(copiedData: subtitle, copyType: title),
+      ),
       dense: true,
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 0.0,

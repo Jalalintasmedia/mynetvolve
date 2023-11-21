@@ -98,7 +98,7 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GradientAppBar(title: 'Pembayaran Credit Card'),
+      appBar: GradientAppBar(title: 'Pembayaran Kartu Kredit'),
       body: FutureBuilder(
         future: _ccFuture,
         builder: (ctx, dataSnapshot) {

@@ -12,6 +12,9 @@ class MyPackagesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      constraints: BoxConstraints(
+        minWidth: MediaQuery.sizeOf(context).width / 2,
+      ),
       padding: const EdgeInsets.symmetric(
         horizontal: 16,
         vertical: 12,
@@ -23,57 +26,64 @@ class MyPackagesWidget extends StatelessWidget {
       child: Consumer<Products>(builder: (ctx, productData, _) {
         final product = productData.custProducts![0];
         final productService = product.services[0];
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Palette.kToDark,
-                borderRadius: BorderRadius.circular(50),
+        return IntrinsicWidth(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Palette.kToDark,
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: const Text(
+                  'My Package',
+                  style: TextStyle(color: Colors.white, fontSize: 12),
+                ),
               ),
-              child: const Text(
-                'My Package',
-                style: TextStyle(color: Colors.white, fontSize: 12),
-              ),
-            ),
-            const Divider(color: Colors.grey),
-            IntrinsicHeight(
-              child: Row(
+              const Divider(color: Colors.grey),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   buildMyPackageTile(
                     '${productService.speedMbps} ${productService.uomDesc}',
+                    product.productName,
                     Icons.language,
                   ),
-                  const VerticalDivider(color: Colors.grey),
-                  buildMyPackageTile(
-                    '-',
-                    Icons.tv,
-                  ),
+                  // const VerticalDivider(color: Colors.grey),
+                  // buildMyPackageTile(
+                  //   '-',
+                  //   Icons.tv,
+                  // ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         );
       }),
     );
   }
 
-  Widget buildMyPackageTile(String text, IconData icon) {
-    return Expanded(
-      child: Column(
-        children: [
-          Icon(
-            icon,
-            color: Palette.kToDark,
-            size: 50,
+  Widget buildMyPackageTile(String text, String name, IconData icon) {
+    return Column(
+      children: [
+        Text(
+          name,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.grey.shade700,
           ),
-          Text(
-            text,
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
+        ),
+        Icon(
+          icon,
+          color: Palette.kToDark,
+          size: 50,
+        ),
+        Text(
+          text,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ],
     );
   }
 }

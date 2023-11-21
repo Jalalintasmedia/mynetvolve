@@ -16,13 +16,12 @@ class CreditCardSub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionPembayaranSub(
-      title: 'Kartu Kredit',
+      title: 'Kartu Kredit dan Paylater',
       children: [
         GeneratePembayaranTile(
           title: 'Kartu Kredit',
           image: 'mandiri-logo.png',
           noImage: true,
-          tutorialText: '',
           onPressed: () => Navigator.of(context).push(
             MaterialPageRoute(
               builder: (_) => CreditCardScreen(
@@ -36,7 +35,6 @@ class CreditCardSub extends StatelessWidget {
         GeneratePembayaranTile(
           title: 'Akulaku',
           image: 'akulaku-logo.jpeg',
-          tutorialText: '',
           onPressed: () => Navigator.of(context).push(
             MaterialPageRoute(
               builder: (_) => AkuLakuScreen(
