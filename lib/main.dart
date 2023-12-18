@@ -103,6 +103,7 @@ class MyApp extends StatelessWidget {
             title: 'MyNetvolve',
             theme: ThemeData(
               primarySwatch: Palette.kToDark,
+              useMaterial3: false,
               // fontFamily: 'Gotham',
             ),
             debugShowCheckedModeBanner: false,

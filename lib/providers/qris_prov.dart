@@ -191,7 +191,7 @@ class QrisProv with ChangeNotifier {
     required int amount,
     required String email,
   }) async {
-    final url = Uri.parse('$PG_API_URL/cc.php');
+    final url = Uri.parse('$PG_API_URL/cc-dev.php');
     try {
       print({
         'act': 'generate',
