@@ -1,6 +1,7 @@
 // import 'dart:io' as io;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mynetvolve/core/constants.dart';
 import 'package:mynetvolve/widgets/gradient_app_bar.dart';
 
@@ -17,6 +18,20 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   var _isLoading = false;
+  static const oneTalkLiveChatMethodChannel =
+      MethodChannel('io.taptalk.onetalklivechat');
+
+  Future<void> _openOneTalkLiveChatUI() async {
+    try {
+      final bool isOneTalkInitialized = await oneTalkLiveChatMethodChannel
+          .invokeMethod('initOneTalkLiveChat');
+      if (isOneTalkInitialized) {
+        await oneTalkLiveChatMethodChannel.invokeMethod('openLiveChatView');
+      }
+    } on PlatformException catch (e) {
+      print('===== ERROR: $e');
+    }
+  }
 
   @override
   void initState() {
@@ -97,8 +112,9 @@ class _ChatScreenState extends State<ChatScreen> {
                   //     print('===== SUCCESS $chatroom');
                   //   });
                   // },
-                  onPressed: () => Navigator.of(context)
-                      .pushNamed(RouteNames.LIVE_CHAT_ROUTE),
+                  // onPressed: () => Navigator.of(context)
+                  //     .pushNamed(RouteNames.LIVE_CHAT_ROUTE),
+                  onPressed: _openOneTalkLiveChatUI,
                   text: 'Mulai Chat!',
                   useSide: true,
                   useShadow: false,

@@ -103,4 +103,5 @@ dependencies {
     implementation 'androidx.window:window-java:1.0.0'
     implementation 'com.google.firebase:firebase-messaging:23.1.1'
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.github.taptalk-io:taptalk.io-omnichannel-android:2.2.0'
 }
